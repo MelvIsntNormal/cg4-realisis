@@ -1,0 +1,36 @@
+<% provide(:title, "Edit your account") %>
+<% provide(:pagetitle, "Edit") %>
+
+
+<div id="form">
+  <%= form_for(@user) do |f| %>
+  	<%= render 'shared/error_messages' %>
+	
+	<ul>
+		<li>
+    		<%= f.text_field :name, required: true, placeholder: "Username", pattern: "[a-z0-9]+" %>
+    		<span class="tooltip">Can only contain lowercase letters and numbers</span>
+		</li>
+		
+		<li>
+    		<%= f.text_field :email, required: true, placeholder: "Email", type: "email"%>
+    		<span class="tooltip">eg. jondoe@example.com</span>
+		</li>
+		
+		<li>
+    		<%= f.password_field :password, required: true, placeholder: "Password" %>
+    		<span class="tooltip">Must be 8 characters or longer</span>
+    	</li>
+    	
+    	<li>
+    		<%= f.password_field :password_confirmation, required:true, placeholder: "Confirm Password" %>
+    		<span class="tooltip">Must match the above password</span>
+		</li>
+		
+		<li>
+    		<%= f.submit "Save", class: "submit" %>
+    		<span class="tooltip"> Allow a couple of minutes before the update is visible to others </span>
+    	</li>
+    </ul>
+  <% end %>
+</div>

@@ -1,0 +1,39 @@
+player:
+  id: 1
+  label: Player
+  badge: NIL
+  
+bronze helper:
+  id: 2
+  label: Bronze Helper
+  badge: STF_HELP_BRZ
+  
+silver helper:
+  id: 3
+  label: Silver Helper
+  badge: STF_HELP_SLV
+  
+gold helper:
+  id: 4
+  label: Gold Helper
+  badge: STF_HELP_GLD
+  
+moderator:
+  id: 5
+  label: Moderator
+  badge: STF_MOD
+  
+senior moderator:
+  id: 6
+  label: Moderator
+  badge: STF_MOD
+  
+administrator:
+  id: 7
+  label: Administrator
+  badge: STF_ADM
+  
+senior administrator:
+  id: 8
+  label: Administrator
+  badge: STF_ADM

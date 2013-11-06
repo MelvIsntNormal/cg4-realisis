@@ -1,0 +1,44 @@
+$darkPurple: rgba(67, 16, 82, 1);
+$lightPurple: rgba(134, 28, 163, 1);
+
+@import 'application/form';
+@import 'application/mixin';
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $darkPurple;
+  font-family: verdana;
+}
+
+#center-box {
+  width: 700px;
+  height: 175px;
+  background-color: $lightPurple;
+  padding: 10px;
+  margin: 0px;
+  
+  font-family: arial;
+  text-align: center;
+  color: #FFFFFF;
+  
+  @include rounded-corners(10px);
+  @include shadow(4px, 4px, 4px, 4px, rgba(0, 0, 0, 0.2));
+  @include centerElement;
+  
+  #login {
+    width: 350px;
+    height: 175px;
+  }
+  
+  #welcome {
+    width: 350px;
+    height: 175px;
+    
+    #title {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 5px;
+      @include rounded-corners(5px)
+    }
+  }
+}

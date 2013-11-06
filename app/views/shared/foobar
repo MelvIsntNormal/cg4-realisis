@@ -1,0 +1,26 @@
+<% case doaction %>
+	<% when "req-friend"%>
+		<%= form_for(current_user.relation.build(character: @user.id, reltype: "freq"), remote: true) do |f| %>
+  			<div><%= f.hidden_field :character %></div>
+  			<div><%= f.hidden_field :reltype %></div>
+  			<%= f.submit "Add Friend", class: "submit" %>
+		<% end %>
+		
+	<% when "add-friend"%>
+		<%= form_for(current_user.relation.build(character: @user.id, reltype: "friend"), remote: true) do |f| %>
+  			<div><%= f.hidden_field :character %></div>
+  			<div><%= f.hidden_field :reltype %></div>
+  			<%= f.submit "Accept Request", class: "submit" %>
+		<% end %>
+	
+	<% when "rej-friend" %>
+		<%= form_for(current_user.reverse_relation.find_by(owner: @user.id, reltype: "freq"), html: { method: :delete }, remote: true) do |f| %>
+  			<%= f.submit "Reject Request", class: "submit" %>
+		<% end %>
+	
+	<% when "rm-friend"%>
+		<%= form_for(current_user.reverse_relation.find_by(owner: @user.id, reltype: "friend"), html: { method: :delete }, remote: true) do |f| %>
+  			<%= f.submit "Remove Friend", class: "submit" %>
+		<% end %>
+		
+<% end %>

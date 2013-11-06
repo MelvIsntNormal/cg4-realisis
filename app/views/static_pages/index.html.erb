@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Under Construction | Realisis</title>
+		<%= stylesheet_link_tag "front" %>
+		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  		<%= csrf_meta_tags %>
+  	</head>
+  	
+  	<body>
+  		<div id="center-box">
+  			<table style="width: 100%; height: 100%;">
+  				<tr>
+  					<th>
+  						<div id="login">
+  							<%= form_for(:session, url: sessions_path) do |f| %>
+							<ul>
+								<li>
+      							<%= f.text_field :name, placeholder: "Username" %>
+      							</li>
+      							<li>
+      							<%= f.password_field :password, placeholder: "Password" %>
+								</li>
+								<li>
+      							<%= f.submit "Sign in", class: "submit" %>
+      							</li>
+      						</ul>
+    						<% end %>
+  						</div>
+  					</th>
+  					<th>
+  						<div id="welcome">
+  							<p id="title"><b>Welcome to Realisis (Still Under Construction)</b></p>
+  							This is the site of Realisis. Watch this space to become one of our BETA testers!
+  						</div>
+  					</th>
+  				</tr>
+  			</table>
+  		</div>
+  	</body>
+</html>

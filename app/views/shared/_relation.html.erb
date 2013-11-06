@@ -1,0 +1,12 @@
+	<div id="relation">
+		<% if current_user.friends?(@user) %>
+			<%= render 'shared/edit_relation', doaction: "rm-friend" %>
+		<% elsif current_user.req_friends?(@user) %>
+			Friend Request Pending...
+		<% elsif current_user.pend_friends?(@user) %>
+			<%= render 'shared/edit_relation', doaction: "add-friend" %>
+			<%= render 'shared/edit_relation', doaction: "rej-friend" %>
+		<% else %>
+			<%= render 'shared/edit_relation', doaction: "req-friend" %>
+		<% end %>
+	</div>

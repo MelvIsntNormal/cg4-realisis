@@ -1,0 +1,14 @@
+<ul id="friendlist">
+	<% @friends = current_user.friends%>
+	<% @friend_requests = current_user.friend_requests%>
+	<% if @friend_requests.any? %>
+		<% @friend_requests.each do |r| %>
+			<li class="friend-request-cp"><%= link_to "Friend Request from #{r.name}", "/#{r.name}" %></li>
+		<% end %>
+	<% end %>
+	<% if @friends.any? %>
+		<% @friends.each do |r| %>
+			<li class="friend-cp"><%= link_to "#{r.name}", "/#{r.name}" %></li>
+		<% end %>
+	<% end %>
+</ul>

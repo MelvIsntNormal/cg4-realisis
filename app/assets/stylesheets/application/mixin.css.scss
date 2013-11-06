@@ -1,0 +1,23 @@
+$darkPurple: rgba(67, 16, 82, 1);
+$lightPurple: rgba(134, 28, 163, 1);
+
+@mixin rounded-corners($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+@mixin shadow($hor, $ver, $blur, $spread, $color, $inset:"") {
+  box-shadow: $hor $ver $blur $spread $color #{$inset};
+  -moz-box-shadow: $hor $ver $blur $spread $color #{$inset};
+  -webkit-box-shadow: $hor $ver $blur $spread $color #{$inset};
+}
+
+@mixin centerElement {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}

@@ -1,0 +1,12 @@
+<% provide(:title, @user.name) %>
+<% provide(:pagetitle, @user.name) %>
+
+<%= render'shared/relation' unless current_user?(@user)%>
+
+<div id="stats">
+	Player Statistics will appear here.
+</div>
+
+<div id="characters">
+	Player Characters will appear here.
+</div>

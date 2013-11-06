@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Play! | Realisis</title>
+		<%= include_gon %>
+		<%= stylesheet_link_tag    "game_client", media: "all", "data-turbolinks-track" => true %>
+  		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  		<%= javascript_include_tag "game_client" %>
+  		<%= render 'shared/shim' %>
+  		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<section id="room">
+			
+    	</section>
+    	<section id="users">
+    		
+    	</section>
+    	<section id="friends">
+    		
+    	</section>
+    	<section id="chat-bar">
+    		<%= form_for(@chat_message, html: { id: "new_message" }) do |f| %>
+    			<input type="text" id="mymsg" maxlength=140 placeholder="Give us a second..." disabled>
+    			<input type="submit" text="Send" id="btnSend">
+    		<% end %>
+    	</section>
+	</body>
+</html>

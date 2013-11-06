@@ -1,0 +1,78 @@
+@import url(http://fonts.googleapis.com/css?family=VT323);
+@import 'mixin';
+@import 'form';
+@import 'aside';
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  -webkit-transition: all .25s linear;
+  -moz-transition: all .25s linear;
+  -ms-transition: all .25s linear;
+  -o-transition: all .25s linear;
+  -transition: all .25s linear;
+}
+
+#pagetitle {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  margin: 0;
+  color: rgba(143, 16, 22, 1);
+  font-size: 72px;
+  font-family: 'VT323', cursive;
+}
+
+nav {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  width: 100%;
+  color: #ffffff;
+  height: 35px;
+  text-align: right;
+  padding-top: 15px;
+
+  /* Adds shadow to the bottom of the bar */
+  @include shadow(0px, 0px, 8px, 0px, rgba(0, 0, 0, 0.2));
+    
+  /* Adds the transparent background */
+  background-color: rgba(1, 1, 1, 0.8);
+  color: rgba(1, 1, 1, 0.8);
+  
+   a {
+     font-size: 14px;
+     padding-left: 15px;
+     padding-right: 15px;
+     color: white;
+     text-decoration: none;
+      
+     &:hover {
+       color: grey;
+    }
+  }
+}
+
+#main {
+  position: relative;
+  margin-top: 50px;
+  margin-left: 350px;
+  padding: 0px;
+  
+  height: 100%;
+  
+  div {
+    position: relative;
+    width: 91%;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    @include shadow(4px, 4px, 4px, 4px, rgba(0, 0, 0, 0.2));
+    padding: 10px;
+    margin: 20px auto;
+    
+    &.buffer {
+      width: 100%;
+    }
+  }
+}

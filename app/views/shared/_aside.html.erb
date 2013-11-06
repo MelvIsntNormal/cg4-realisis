@@ -1,0 +1,29 @@
+<aside>
+	<% if signed_in? %>
+		<div id="cp" style="height: 100%; width: 100%;">
+			<h3>Info</h3>
+			<div>
+				You're logged in! Hi, <%= current_user.name %>!
+			</div>
+			<h3>Friends</h3>
+			<div id="friends">
+				<% if current_user.relations.any? %>
+					<%= render 'shared/friends' %>
+				<% else %>
+					None :( Go find some!
+				<% end %>
+			</div>
+		</div>
+	<% else %>
+		<div id="login">
+			<div class="title">Login</div>
+			<%= form_for(:session, url: sessions_path) do |f| %>
+				<ul>
+					<li><%= f.text_field :name, placeholder: "Username" %></li>
+     				<li><%= f.password_field :password, placeholder: "Password" %></li>
+					<li><%= f.submit "Login", class: "submit" %></li>
+   				</ul>
+   			<% end %>
+		</div>
+	<% end %>
+</aside>

@@ -1,0 +1,8 @@
+<header>
+	<nav>
+		<%= link_to "Home", root_path %>
+		<% if signed_in? %>
+			<%= link_to "Logout", logout_path, id: "logout", method: "delete" %>
+		<% end %>
+	</nav>
+</header>

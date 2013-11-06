@@ -1,0 +1,99 @@
+@import 'application/mixin';
+
+* {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+head {
+  display: none;
+}
+
+section {
+    position: fixed;
+    border: 1px solid lightgray;
+    position: fixed;
+    background: rgba(220,220,220,0.4);
+    &#room {
+        height: calc(100% - 50px);
+        width: calc(100% - 200px);
+        overflow: auto;
+    }
+    
+    &#users {
+        height: 50%;
+        width: 200px;
+        left: calc(100% - 200px);
+    }
+    
+    &#friends{
+        height: 50%;
+        width: 200px;
+        top: 50%;
+        left: calc(100% - 200px);
+    }
+    
+    &#chat-bar {
+        height: 50px;
+        width: calc(100% - 200px);
+        top: calc(100% - 50px);
+        
+        &#mymsg {
+          background-color: red;
+        }
+    }
+}
+
+div {
+  &.msg {
+    font-family: 'sans-serif';
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 92%;
+    background: rgba(0,220,0,0.1);
+    border: 1px solid rgba(0,220,0,0.5);
+    @include rounded-corners(10px);
+  }
+  
+  &.error {
+    font-family: 'sans-serif';
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 92%;
+    background: rgba(220,0,0,0.1);
+    border: 1px solid rgba(220,0,0,0.5);
+    @include rounded-corners(10px);
+  }
+  
+  &.new-user {
+    font-family: 'sans-serif';
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 92%;
+    background: rgba(0,0,220,0.1);
+    border: 1px solid rgba(0,0,220,0.5);
+    @include rounded-corners(10px);
+  }
+}
