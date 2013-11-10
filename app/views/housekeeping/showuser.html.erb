@@ -1,0 +1,24 @@
+<% provide(:title, "Editing #{@user.name}") %>
+<% provide(:pagetitle, "Editing #{@user.name}") %>
+
+<div id="general">
+  <div class="inner-divide" id="Info">
+    Name: <%= @user.name %> <br>
+    Created: <%= @user.created_at.to_s %> <br>
+    Last Update: <%= @user.updated_at.to_s %> <br>
+  </div>
+
+  <div class="inner-divide" id="Actions">
+    <%= render('shared/hk/admin_user_actions') unless current_user?(@user) %>
+  </div>
+
+</div>
+
+<% if @user.chat_messages.any? %>
+    <div id="messages">
+      Sent <% pluralize(@chat_messages.count, 'message') %>: <br>
+      <ol class="list-my-messages">
+        <%= render @chat_messages %>
+      </ol>
+    </div>
+<% end %>

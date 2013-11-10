@@ -44,7 +44,7 @@ Thread.new do
               response = {
                 action: "new_msg",
                 name: sender[:name],
-                msg: h(client[:msg]),
+                msg: h(strip_tags(client[:msg]))
               }
               @msg = ChatMessage.new(user_id: sender[:id], message: response[:msg])
               @msg.save

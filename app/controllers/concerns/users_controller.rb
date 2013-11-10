@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_filter :isAuth, :only => [:new, :create]
-  before_action :correct_user, only: [:edit, :update]
+  skip_before_filter :isAuth,   only: [:new, :create]
+  before_action :correct_user,  only: [:edit, :update]
   
   def index
     @users = Users.all
@@ -43,6 +43,12 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @user = User.find(params[:user][:id])
+    @user.destroy!
+    redirect_to users_list_path
   end
   
   private

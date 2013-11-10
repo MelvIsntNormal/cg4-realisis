@@ -1,0 +1,9 @@
+<li>
+  <span class="title"><%= ticket.title %></span>
+  <span class="timestamp">
+    Opened <%= time_ago_in_words(ticket.created_at) %> ago
+  </span>
+  <span class="timestamp">
+    Last updated <%= time_ago_in_words(ticket.updated_at) %> ago
+  </span>
+</li>

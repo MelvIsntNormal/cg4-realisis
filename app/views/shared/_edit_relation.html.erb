@@ -1,15 +1,15 @@
 <% case doaction %>
 	<% when "req-friend"%>
 		<%= form_for(current_user.relations.build(character_id: @user.id, reltype: "freq"), remote: true) do |f| %>
-  			<div><%= f.hidden_field :character_id %></div>
-  			<div><%= f.hidden_field :reltype %></div>
+  			<%= f.hidden_field :character_id %>
+  			<%= f.hidden_field :reltype %>
   			<%= f.submit "Add Friend", class: "submit" %>
 		<% end %>
 		
 	<% when "add-friend"%>
 		<%= form_for(current_user.relations.build(character_id: @user.id, reltype: "friend"), remote: true) do |f| %>
-  			<div><%= f.hidden_field :character_id %></div>
-  			<div><%= f.hidden_field :reltype %></div>
+  			<%= f.hidden_field :character_id %>
+  			<%= f.hidden_field :reltype %>
   			<%= f.submit "Accept Request", class: "submit" %>
 		<% end %>
 	

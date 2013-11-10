@@ -1,8 +1,9 @@
 <% provide(:title, @user.name) %>
 <% provide(:pagetitle, @user.name) %>
 
+<div id="relation">
 <%= render'shared/relation' unless current_user?(@user)%>
-
+</div>
 <div id="stats">
 	Player Statistics will appear here.
 </div>

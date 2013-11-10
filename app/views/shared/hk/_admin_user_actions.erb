@@ -1,0 +1,31 @@
+<ul>
+  <li>
+    <%= form_for @user, url: "/hk/users/#{@user.name}", method: "patch", remote: true do |f| %>
+        <%= f.hidden_field :id %>
+        <% if @user.admin? %>
+            <%= f.submit "Remove Admin", class: "submit" %>
+        <% else %>
+            <%= f.submit "Add Admin", class: "submit" %>
+        <% end %>
+    <% end %>
+  </li>
+
+  <li>
+    <%= form_for @user, url: "/hk/users/#{@user.name}", method: "patch", remote: true do |f| %>
+        <%= f.hidden_field :id %>
+        <% if @user.locked? %>
+            <%= f.submit "Unlock Account", class: "submit" %>
+        <% else %>
+            <%= f.submit "Lock Account", class: "submit" %>
+        <% end %>
+    <% end %>
+  </li>
+
+  <li>
+    <%= form_for @user, url: "/hk/users/#{@user.name}/rm", method: "delete" do |f| %>
+        <%= f.hidden_field :id %>
+        <%= f.submit "Delete Account", class: "submit", data: {
+                confirm: "You are about to delete #{@user.name}'s account, including all characters and their associated data. This will also nullify any help tickets and moderation requests that they have sent. In the case of an administrator being deleted, any tickets that they are assigned to will also be nullified, and freed. This action cannot be undone. Are you absolutely sure that you wish to PERMANENTLY delete this account?'" } %>
+    <% end %>
+  </li>
+</ul>

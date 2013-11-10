@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.0.0' 
 # Version required for this application
 
+gem 'rubyzip', '< 1.0.0'
 gem 'rails', '4.0.1' 		# Rails framework
 gem 'bootstrap-sass', '2.3.2.0' # Used for advanced CSS: open-source Sass add on from Twitter 
 gem 'bcrypt-ruby', '3.1.2' 	# Used for password encryption
@@ -10,7 +11,7 @@ gem 'jquery-ui-rails' # Used to create user interfaces
 gem 'em-websocket', git: 'git://github.com/igrigorik/em-websocket.git'
 gem 'crypt'                                       # Used for message encryption
 gem 'eventmachine'                    # EM-Websocket dependancy
-gem 'gon'                           #Used to pass variables from Rails to Javascript.
+gem 'gon'                           # Used to pass variables from Rails to Javascript.
 
 group :assets do
   gem 'haml_coffee_assets' # Used for Coffescript template generation

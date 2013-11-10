@@ -1,4 +1,3 @@
-	<div id="relation">
 		<% if current_user.friends?(@user) %>
 			<%= render 'shared/edit_relation', doaction: "rm-friend" %>
 		<% elsif current_user.req_friends?(@user) %>
@@ -9,4 +8,3 @@
 		<% else %>
 			<%= render 'shared/edit_relation', doaction: "req-friend" %>
 		<% end %>
-	</div>

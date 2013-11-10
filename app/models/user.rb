@@ -2,12 +2,16 @@ class User < ActiveRecord::Base
   
   has_many :characters, foreign_key: "accountid", dependent: :destroy
   has_many :chat_messages, dependent: :destroy
+  
   has_many :relations, foreign_key: "owner_id", dependent: :destroy
   has_many :friends, -> { where "relations.reltype" => "friend" }, through: :relations, source: :character
   has_many :requested_friends, -> { where "relations.reltype" => "freq" }, through: :relations, source: :character
   
   has_many :reverse_relations, foreign_key: "character_id", class_name: "Relation", dependent: :destroy
   has_many :friend_requests, -> { where "relations.reltype" => "freq" }, through: :reverse_relations, source: :owner
+  
+  has_many :sent_tickets, class_name: "Ticket", foreign_key: "sender", inverse_of: :sender, dependent: :nullify
+  has_many :assigned_tickets, class_name: "Ticket", foreign_key: "assigned", inverse_of: :admin, dependent: :nullify
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   

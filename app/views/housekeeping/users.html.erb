@@ -1,2 +1,12 @@
-<h1>Housekeeping#users</h1>
-<p>Find me in app/views/housekeeping/users.html.erb</p>
+<% provide :title, 'All Users' %>
+<% provide :pagetitle, 'All Users' %>
+
+<div id="userlist">
+  <ul class="users">
+    <% @users.each do |user| %>
+      <li>
+        <%= link_to user.name, "/hk/users/#{user.name}" %>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -6,10 +6,39 @@ class HousekeepingController < ApplicationController
   end
 
   def users
-    
+    @users = User.all
   end
 
-  def edit
+  def showuser
+    @user = User.find_by_name(params[:name])
+    @chat_messages = @user.chat_messages
+  end
+  
+  def updateuser
+    @user = User.find(params[:user][:id])
+    case params[:commit]
+      when "Add Admin", "Remove Admin"
+        @user.toggle!(:admin)
+      when "Lock Account", "Unlock Account"
+        @user.toggle!(:locked)
+    end
+
+    respond_to do |format|
+      format.html { redirect_to "hk/users/#{@user.name}" }
+      format.js
+    end
+  end
+  
+  def tickets
+    @my_tickets = current_user.assigned_tickets
+    @open_tickets = Ticket.all.where(open: true)
+  end
+  
+  def showticket
+    
+  end
+  
+  def updateticket
     
   end
   

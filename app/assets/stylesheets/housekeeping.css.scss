@@ -1,3 +1,71 @@
-// Place all the styles related to the Housekeeping controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'application/mixin';
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid gray;
+    &:last-child {
+      border-bottom: 1px solid gray;
+    }
+  }
+}
+
+div {
+  &.inner-divide {
+    font-family: 'sans-serif';
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 92%;
+    background: rgba(187, 139, 220, 0.1);
+    border: 1px solid rgba(187, 139, 220, 0.5);
+    @include rounded-corners(10px);
+  }
+}
+
+.list-my-messages {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.message {
+  display: block;
+}
+.timestamp {
+  color: lightgray;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.list-tickets {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.title {
+  display: block;
+}
+.timestamp {
+  color: lightgray;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
