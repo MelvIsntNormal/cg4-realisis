@@ -1,5 +1,8 @@
 <li>
   <span class="title"><%= ticket.title %></span>
+  <% unless ticket.open? %>
+  <span class="title"> Moderator's comment: <%= ticket.action_taken %> </span>
+  <% end %>
   <span class="timestamp">
     Opened <%= time_ago_in_words(ticket.created_at) %> ago
   </span>

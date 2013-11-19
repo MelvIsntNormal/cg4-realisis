@@ -1,0 +1,18 @@
+<div class="ticket-count">
+  You have <%= pluralize(@open_tickets.count, 'open ticket', 'open tickets') %>.
+  <% unless @open_tickets.count >= 1 %>
+    <%= link_to "Call for help", gethelp_path %>
+  <% end %>
+</div>
+
+<div id="open-tickets">
+  <%= render @open_tickets if @open_tickets.any? %>
+</div>
+
+<div class="ticket-count">
+  You have <%= pluralize(@closed_tickets.count, 'closed ticket', 'closed tickets') %>.
+</div>
+
+<div id="closed-tickets">
+  <%= render @closed_tickets if @closed_tickets.any? %>
+</div>

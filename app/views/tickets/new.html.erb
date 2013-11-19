@@ -1,0 +1,26 @@
+<% provide(:title, "Report an incident") %>
+<% provide(:pagetitle, "Please fill in all information below, and try and include as much information as you can.") %>
+
+
+<div id="form">
+  <%= form_for(@ticket) do |f| %>
+
+      <ul>
+        <li>
+          <%= f.text_field :title, required: true, placeholder: "Summarize in 70 chars or less...", maxlength: 70 %>
+          <span class="tooltip">Make this short and to the point</span>
+        </li>
+
+        <li>
+          <%= f.text_area :desc, required: true, placeholder: "What happened?", maxlength: 6000%>
+          <span class="tooltip">Put as much detail into your description as possible.
+            Tag users by using an @tag (tag user jondoe by writing @jondoe)</span>
+        </li>
+
+        <li>
+          <%= f.submit "Send Report", class: "submit", confirm: "Never send false reports, as they can get your account locked by an administrator or your account permanently deleted. Are you sure you wish to send this report?" %>
+          <span class="tooltip"> <b>NEVER send false reports.</b> You run the risk of your account being locked indefinitely </span>
+        </li>
+      </ul>
+  <% end %>
+</div>

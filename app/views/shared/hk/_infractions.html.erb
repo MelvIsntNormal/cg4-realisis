@@ -1,0 +1,26 @@
+<div class="inner-divide" id="Lock">
+  <% if @user.lock.nil? %>
+      <%= link_to "Lock Account", new_user_lock_path(@user.id), remote: true, id: "newlock" %>
+  <% else %>
+      This account is locked. <%= link_to "Unlock Account", "/users/#{@user.id}/lock", method: :delete %><br>
+      Reason: <%= @lock.desc %> <br>
+      Locked by <%= User.find(@lock.locked_by).name %> <br>
+      <% if @lock.permanent? %>
+          This lock is permanent. <br>
+      <% else %>
+          Expires in <%= distance_of_time_in_words_to_now(@lock.expires_at) %> on <%= @lock.expires_at %> <br>
+      <% end %>
+      <%= link_to "Edit Lock", edit_user_lock_path(@lock.user_id), remote: true, id: "editlock" %>
+  <% end %>
+</div>
+
+<div class="inner-divide" id="InfractionStats">
+  Infractions: <%= @user.infractions.count %><br>
+  Infraction Points: <%= @user.infraction_points %><br>
+  Infraction Level: <%= @user.infraction_level %><br>
+  <%= link_to "Give Infraction", new_user_infraction_path(@user.id), remote: true, id: "newinf" %>
+</div>
+
+<div class="inner-divide" id="Infractions">
+  <%= render 'shared/infractions/show' %>
+</div>

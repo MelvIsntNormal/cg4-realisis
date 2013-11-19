@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131110165824) do
+ActiveRecord::Schema.define(version: 20131119074204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,44 @@ ActiveRecord::Schema.define(version: 20131110165824) do
 
   add_index "chat_messages", ["user_id", "created_at"], name: "index_chat_messages_on_user_id_and_created_at", using: :btree
 
+  create_table "delayed_jobs", force: true do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "infractions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "admin_id"
+    t.text     "desc"
+    t.integer  "points"
+    t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "expired",    default: false
+    t.boolean  "permanent",  default: false
+  end
+
+  create_table "locks", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "locked_by"
+    t.string   "desc"
+    t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "permanent",  default: false
+  end
+
   create_table "permission_ranks", force: true do |t|
     t.string   "label"
     t.integer  "badge"
@@ -59,8 +97,8 @@ ActiveRecord::Schema.define(version: 20131110165824) do
   create_table "tickets", force: true do |t|
     t.string   "title"
     t.text     "desc"
-    t.integer  "sender"
-    t.integer  "assigned"
+    t.integer  "sender_id"
+    t.integer  "assigned_id"
     t.text     "addinfo"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -82,11 +120,20 @@ ActiveRecord::Schema.define(version: 20131110165824) do
     t.string   "remember_token"
     t.integer  "playchar"
     t.boolean  "admin",           default: false
-    t.boolean  "locked",          default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+
+  create_table "warning_levels", force: true do |t|
+    t.string   "desc"
+    t.integer  "points"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "lock_length"
+    t.integer  "infr_length"
+  end
 
 end

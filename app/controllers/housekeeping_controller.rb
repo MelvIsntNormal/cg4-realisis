@@ -12,6 +12,8 @@ class HousekeepingController < ApplicationController
   def showuser
     @user = User.find_by_name(params[:name])
     @chat_messages = @user.chat_messages
+    @lock = @user.lock
+    @infractions = @user.infractions
   end
   
   def updateuser
@@ -19,32 +21,54 @@ class HousekeepingController < ApplicationController
     case params[:commit]
       when "Add Admin", "Remove Admin"
         @user.toggle!(:admin)
-      when "Lock Account", "Unlock Account"
-        @user.toggle!(:locked)
     end
 
-    respond_to do |format|
-      format.html { redirect_to "hk/users/#{@user.name}" }
-      format.js
-    end
+    redirect_to "hk/users/#{@user.name}"
+    return
   end
   
   def tickets
     @my_tickets = current_user.assigned_tickets
-    @open_tickets = Ticket.all.where(open: true)
+    @open_tickets = Ticket.all.where(open: true, assigned_id: nil)
   end
   
   def showticket
-    
+    @ticket = Ticket.find(params[:id])
+    @addinfo = JSON.parse(@ticket.addinfo).symbolize_keys
+
   end
   
   def updateticket
-    
+    @ticket = Ticket.find(params[:id])
+    case params[:commit]
+      when "Capture Ticket"
+        @ticket.assigned_id = current_user.id
+        @ticket.save!
+      when "Release Ticket"
+        @ticket.assigned_id = nil
+        @ticket.save!
+      when "Close Ticket"
+        @ticket.action_taken = params[:action_taken]
+        @ticket.open = false
+        @ticket.save!
+        redirect_to "/hk/tickets/list"
+    end
+
+    respond_to do |format|
+      format.html { redirect_to "hk/tickets/#{@ticket.id}" }
+      format.js
+    end
   end
-  
+
+  def newinf
+
+  end
+
+  def newlock
+
+  end
+
   private
   
-    def admin_user
-      redirect_to me_path unless current_user.admin?
-    end
+
 end

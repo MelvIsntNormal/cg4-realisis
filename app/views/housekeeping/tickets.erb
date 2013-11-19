@@ -1,12 +1,23 @@
 <% provide :title, 'Tickets' %>
 <% provide :pagetitle, 'Help Tickets' %>
 
-<div id="ticketlist">
+<div id="my-ticketlist">
   My Tickets:
   <ol class="tickets">
-    <% @my_tickets.each do |user| %>
+    <% @my_tickets.each do |ticket| %>
         <li>
-          <%= link_to user.name, "/hk/users/#{user.name}" %>
+          <%= link_to ticket.title, "/hk/tickets/#{ticket.id}" %>
+        </li>
+    <% end %>
+  </ol>
+</div>
+
+<div id="ticketlist">
+  Open Tickets:
+  <ol class="tickets">
+    <% @open_tickets.each do |ticket| %>
+        <li>
+          <%= link_to ticket.title, "/hk/tickets/#{ticket.id}" %>
         </li>
     <% end %>
   </ol>

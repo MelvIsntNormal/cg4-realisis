@@ -9,9 +9,18 @@ class User < ActiveRecord::Base
   
   has_many :reverse_relations, foreign_key: "character_id", class_name: "Relation", dependent: :destroy
   has_many :friend_requests, -> { where "relations.reltype" => "freq" }, through: :reverse_relations, source: :owner
-  
-  has_many :sent_tickets, class_name: "Ticket", foreign_key: "sender", inverse_of: :sender, dependent: :nullify
-  has_many :assigned_tickets, class_name: "Ticket", foreign_key: "assigned", inverse_of: :admin, dependent: :nullify
+
+  has_many :help_requests, foreign_key: "sender_id", class_name: "Ticket", dependent: :nullify
+  has_many :sent_requests, through: :help_requests , source: :sender
+
+  has_many :tickets, foreign_key: "assigned_id", dependent: :nullify
+  has_many :assigned_tickets, through: :tickets, source: :assigned
+
+  has_one :lock, dependent: :destroy
+  has_many :given_locks, class_name: "Lock", foreign_key: "locked_by", dependent: :nullify, source: :admin
+
+  has_many :infractions, dependent: :destroy
+  has_many :given_infractions, class_name: "Infraction", foreign_key: "admin_id", dependent: :nullify, source: :admin
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
@@ -71,6 +80,19 @@ class User < ActiveRecord::Base
   def rm_friend!(other_user)
     relations.find_by(character_id: other_user.id, reltype: "friend").destroy!
     other_user.relations.find_by(character_id: self.id, reltype: "friend").destroy!
+  end
+
+  def infraction_points
+    infractions.sum(:points)
+  end
+
+  def infraction_level
+    lvl = WarningLevel.order("points DESC").where(["points < ?", infraction_points]).first
+    if lvl.nil?
+      0
+    else
+      lvl.id
+    end
   end
 
   private

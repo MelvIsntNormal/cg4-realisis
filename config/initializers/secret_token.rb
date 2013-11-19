@@ -24,4 +24,4 @@ def secure_token
   end
 end
 
-Client::Application.config.secret_key_base = secure_token
+Realisis::Application.config.secret_key_base = secure_token

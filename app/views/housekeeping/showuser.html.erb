@@ -14,9 +14,13 @@
 
 </div>
 
+<div id="infractions">
+  <%= render 'shared/hk/infractions' %>
+</div>
+
 <% if @user.chat_messages.any? %>
     <div id="messages">
-      Sent <% pluralize(@chat_messages.count, 'message') %>: <br>
+      Sent <%= pluralize(@chat_messages.count, 'message') %>: <br>
       <ol class="list-my-messages">
         <%= render @chat_messages %>
       </ol>

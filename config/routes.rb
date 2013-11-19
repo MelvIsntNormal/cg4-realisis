@@ -1,18 +1,19 @@
-Client::Application.routes.draw do
+Realisis::Application.routes.draw do
   root  'static_pages#index'
   
   scope '/hk' do
     get '/' => 'housekeeping#index'
-    match '/users/list',      to: 'housekeeping#users',           via: 'get'
-    match '/users/:name',     to: 'housekeeping#showuser',        via: 'get'
-    match '/tickets/list',    to: 'housekeeping#tickets',         via: 'get'
-    match '/tickets/:id',     to: 'housekeeping#showticket',      via: 'get'
-    match '/users/:name',     to: 'housekeeping#updateuser',      via: 'patch'
-    match '/tickets/:id',     to: 'housekeeping#updateticket',    via: 'patch'
-    match '/users/:name/rm',  to: 'users#destroy',                via: 'delete'
-    match '/tickets/:id/rm',  to: 'tickets#destroy',              via: 'delete'
+    match '/users/list',          to: 'housekeeping#users',           via: 'get'
+    match '/users/:name',         to: 'housekeeping#showuser',        via: 'get'
+    match '/tickets/list',        to: 'housekeeping#tickets',         via: 'get'
+    match '/tickets/:id',         to: 'housekeeping#showticket',      via: 'get'
+    match '/users/:name',         to: 'housekeeping#updateuser',      via: 'patch'
+    match '/tickets/:id',         to: 'housekeeping#updateticket',    via: 'patch'
+    match '/users/:name/rm',      to: 'users#destroy',                via: 'delete'
+    match '/tickets/:id/rm',      to: 'tickets#destroy',              via: 'delete'
   end
-  
+
+  match '/gethelp',         to: 'tickets#new',          via: 'get'
   match '/play',            to: 'game_client#play',     via: 'get'
   match '/chat_messages',   to: 'chat_message#index',   via: 'get'
   match '/logout',          to: 'sessions#destroy',     via: 'delete'
@@ -21,6 +22,7 @@ Client::Application.routes.draw do
   match '/register',        to: 'users#new',            via: 'get'
   match '/me',              to: 'users#me',             via: 'get'
   match '/controlpanel',    to: 'users#controlpanel',   via: 'get'
+  match '/:name/tickets',   to: 'tickets#show',         via: 'get'
   match '/:name/edit',      to: 'users#edit',           via: 'get'
   match '/:name' ,          to: 'users#show',           via: 'get'
   match '/:name/:username', to: 'characters#show',      via: 'get'
@@ -28,8 +30,11 @@ Client::Application.routes.draw do
   
   resources :sessions, only: [:new, :create, :destroy]
   resources :relations, only: [:create, :destroy]
+  resources :tickets, only: [:new, :create, :destroy]
   resources :users do
     resources :characters
+    resource :lock, only: [:new, :create, :edit, :update, :destroy]
+    resources :infractions, only: [:new, :create, :edit, :update, :destroy]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

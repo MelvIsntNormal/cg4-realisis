@@ -1,4 +1,4 @@
-Client::Application.configure do
+Realisis::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   
   config.force_ssl = true

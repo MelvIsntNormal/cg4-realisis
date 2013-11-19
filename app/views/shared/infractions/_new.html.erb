@@ -1,0 +1,23 @@
+Remember: If you only need to lock the account, use the Lock Account link above
+<%= form_for @infraction, url: user_lock_path, method: :post, remote: true do |f| %>
+    <ul>
+      <li>
+        <%= f.text_field :desc, required: true, placeholder: "Description" %>
+        <span class="tooltip">Briefly explain why this infraction is necessary</span>
+      </li>
+
+      <li>
+        <%= f.check_box :permanent%>
+        <span class="tooltip">This will place a permanent infraction on the account. Only use if there are serious issues with the account. Specify the reason for a permanent infraction in the description.</span>
+      </li>
+
+      <li>
+        <%= f.check_box :lock%>
+        <span class="tooltip">Add a lock to the account with the same information as above. If the infraction is permanent, the lock will also be permanent. You can edit this above.</span>
+      </li>
+
+      <li>
+        <%= f.submit "Lock Account", class: "submit" %>
+      </li>
+    </ul>
+<% end %>

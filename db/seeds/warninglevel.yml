@@ -1,0 +1,23 @@
+Level 1:
+  id: 1
+  desc: Level 1
+  points: 10
+  comment: This player has earn 10 points worth of infractions
+  lock_length: 7
+  infr_length: 3
+
+Level 2:
+  id: 2
+  desc: Level 2
+  points: 25
+  comment: This player has earn 25 points worth of infractions
+  lock_length: 21
+  infr_length: 10
+
+Level 3:
+  id: 3
+  desc: Level 3
+  points: 50
+  comment: This player has earn 50 points worth of infractions
+  lock_length: 70
+  infr_length: 24

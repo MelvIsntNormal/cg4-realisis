@@ -1,0 +1,27 @@
+<div id="general">
+  <div class="inner-divide" id="Info">
+    <b><%= @ticket.title %></b> <br>
+    Created: <%= @ticket.created_at.to_s %> <br>
+    Last Update: <%= @ticket.updated_at.to_s %> <br>
+  </div>
+
+  <div class="inner-divide" id="Description">
+    <%= @ticket.desc %>
+  </div>
+
+  <% if @addinfo[:tagged_users].any? %>
+      <div class="inner-divide" id="Tagged-Users">
+        <%= pluralize @addinfo[:tagged_users].count, "user has", "users have" %> been tagged in this report:
+        <ul>
+          <% @addinfo[:tagged_users].each do |user| %>
+              <li><%= link_to user, "/hk/users/#{user}", target: "_blank" %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+  <div class="inner-divide" id="Actions">
+    <%= render('shared/hk/admin_ticket_actions') unless !@ticket.open? %>
+  </div>
+
+</div>

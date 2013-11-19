@@ -5,10 +5,19 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   
   before_filter :isAuth
+  before_action :locked
   
   private
   
     def isAuth
       redirect_to root_path unless signed_in?
     end
+
+    def locked
+
+    end
+
+  def admin_user
+    redirect_to me_path unless current_user.admin?
+  end
 end

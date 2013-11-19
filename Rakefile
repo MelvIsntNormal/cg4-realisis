@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Client::Application.load_tasks
+Realisis::Application.load_tasks

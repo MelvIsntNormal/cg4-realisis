@@ -1,0 +1,17 @@
+<%= form_for @ticket, url: "/hk/tickets/#{@ticket.id}", method: "patch", remote: true do |f| %>
+    <% if @ticket.assigned_id != nil %>
+        <% if @ticket.assigned_id == current_user.id %>
+            <%= f.submit "Release Ticket", class: "submit" %>
+        <% end %>
+    <% else %>
+        <%= f.submit "Capture Ticket", class: "submit" %>
+    <% end %>
+<% end %>
+
+<% if @ticket.assigned_id == current_user.id %>
+    <%= form_for @ticket, url: "/hk/tickets/#{@ticket.id}", method: "patch", remote: true do |f| %>
+        <%= f.text_field :action_taken, required: true, placeholder: "Action taken..." %>
+        <%= f.submit "Close Ticket", class: "submit", data: {
+                confirm: "Are you sure you wish to close this ticket? It cannot be re-opened again." } %>
+    <% end %>
+<% end %>

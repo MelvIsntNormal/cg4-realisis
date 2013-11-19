@@ -12,6 +12,8 @@ gem 'em-websocket', git: 'git://github.com/igrigorik/em-websocket.git'
 gem 'crypt'                                       # Used for message encryption
 gem 'eventmachine'                    # EM-Websocket dependancy
 gem 'gon'                           # Used to pass variables from Rails to Javascript.
+gem 'delayed_job_active_record'
+gem 'clockwork'
 
 group :assets do
   gem 'haml_coffee_assets' # Used for Coffescript template generation
