@@ -9,6 +9,6 @@ test:
   debug: true
 
 production:
-  host: realisis.heroluapp.com
+  host: realisis.herokuapp.com
   port: 8080
   debug: false
