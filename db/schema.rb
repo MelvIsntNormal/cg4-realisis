@@ -11,22 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119074204) do
+ActiveRecord::Schema.define(version: 20131130012534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "characters", force: true do |t|
-    t.integer  "accountid"
-    t.string   "username"
-    t.integer  "roundles"
-    t.integer  "gems"
-    t.integer  "rank"
-    t.integer  "tier"
-    t.datetime "tiertime"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "chat_messages", force: true do |t|
     t.string   "message"
@@ -75,13 +63,6 @@ ActiveRecord::Schema.define(version: 20131119074204) do
     t.boolean  "permanent",  default: false
   end
 
-  create_table "permission_ranks", force: true do |t|
-    t.string   "label"
-    t.integer  "badge"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "relations", force: true do |t|
     t.integer  "owner_id"
     t.integer  "character_id"
@@ -110,15 +91,9 @@ ActiveRecord::Schema.define(version: 20131119074204) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.boolean  "verified"
-    t.string   "reg_ip"
-    t.string   "last_ip"
-    t.integer  "character_limit"
-    t.integer  "characters"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token"
-    t.integer  "playchar"
     t.boolean  "admin",           default: false
   end
 

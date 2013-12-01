@@ -1,18 +1,23 @@
-Remember: Editing a lock will reset its expiration date
-<%= form_for @lock, url: user_lock_path, method: :patch, remote: true do |f| %>
+Remember: Editing an infraction will reset its expiration date
+<%= form_for @infraction, url: user_infraction_path, method: :patch, remote: true do |f| %>
     <ul>
       <li>
         <%= f.text_field :desc, required: true, placeholder: "Description" %>
-        <span class="tooltip">Briefly explain why this lock is necessary</span>
+        <span class="tooltip">Briefly explain why this infraction is necessary</span>
+      </li>
+
+      <li>
+        <%= f.number_field :points, required: true, placeholder: "Points", min: 0, max: 20 %>
+        <span class="tooltip">Necessary number of points to be given. You cannot award more than 20 points at a time</span>
       </li>
 
       <li>
         <%= f.check_box :permanent%>
-        <span class="tooltip">This will permanently lock the account. Only use if there are serious and/or unresolved issues with the account. Specify the reason for a permanent lock in the description.</span>
+        <span class="tooltip">This will place a permanent infraction on the account. Only use if there are serious issues with the account. Specify the reason for a permanent infraction in the description.</span>
       </li>
 
       <li>
-        <%= f.submit "Update Lock", class: "submit" %>
+        <%= f.submit "Update Infraction", class: "submit" %>
       </li>
     </ul>
 <% end %>

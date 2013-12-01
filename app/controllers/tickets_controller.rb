@@ -6,9 +6,9 @@ class TicketsController < ApplicationController
   # When 'new' requested (handles new tickets):
   def new
     # Execute if the user hasn't exceeded their ticket allowance
-    unless current_user.help_requests.count < 1
+    unless current_user.help_requests.where(open: true).count < 1
       # Redirect to their ticket list
-      redirect_to ("/#{current_user.name}/tickets")
+      redirect_to ("/tickets")
       # Abort processing this method
       return
     end

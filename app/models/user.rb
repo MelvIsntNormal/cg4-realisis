@@ -82,8 +82,18 @@ class User < ActiveRecord::Base
     other_user.relations.find_by(character_id: self.id, reltype: "friend").destroy!
   end
 
+  def active_infractions
+    i = infractions
+    i.where('expired = ?', false)
+  end
+
+  def expired_infractions
+    i = infractions
+    i.where('expired = ?', true)
+  end
+
   def infraction_points
-    infractions.sum(:points)
+    active_infractions.sum(:points)
   end
 
   def infraction_level

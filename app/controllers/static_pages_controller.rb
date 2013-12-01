@@ -10,8 +10,4 @@ class StaticPagesController < ApplicationController
     render layout: false
   end
   
-  def jdebug
-    render layout: false
-  end
-  
 end

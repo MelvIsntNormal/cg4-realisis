@@ -5,16 +5,21 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   
   before_filter :isAuth
-  before_action :locked
   
   private
   
     def isAuth
       redirect_to root_path unless signed_in?
+      locked
     end
 
     def locked
-
+      user = current_user
+      if user.lock != nil
+        flash[:error] = "Your account has been locked. Please contact Player Support for more information"
+        logout
+        redirect_to root_path
+      end
     end
 
   def admin_user

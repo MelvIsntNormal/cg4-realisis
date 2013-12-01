@@ -21,6 +21,17 @@
   <%= link_to "Give Infraction", new_user_infraction_path(@user.id), remote: true, id: "newinf" %>
 </div>
 
-<div class="inner-divide" id="Infractions">
-  <%= render 'shared/infractions/show' %>
-</div>
+
+
+<% if @user.infractions.any? %>
+    <div class="inner-divide" id="Infraction">
+      Select an infraction below
+    </div>
+
+    <div class="inner-divide" id="Infractions">
+      Received <%= pluralize(@infractions.count, 'infraction') %>: <br>
+      <ol class="list-my-messages">
+        <%= render @infractions %>
+      </ol>
+    </div>
+<% end %>

@@ -2,7 +2,11 @@
 	<nav>
 		<%= link_to "Home", root_path %>
 		<% if signed_in? %>
+          <%= link_to "Get Help", '/tickets' %>
           <%= link_to "Play!", play_path, target: "_blank" %>
+          <% if @user.admin? %>
+              <%= link_to "Housekeeping", '/hk/' %>
+          <% end %>
 		  <%= link_to "Logout", logout_path, id: "logout", method: "delete" %>
 		<% end %>
 	</nav>

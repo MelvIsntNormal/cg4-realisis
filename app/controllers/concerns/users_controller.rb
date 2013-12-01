@@ -2,10 +2,6 @@ class UsersController < ApplicationController
   skip_before_filter :isAuth,   only: [:new, :create]
   before_action :correct_user,  only: [:edit, :update]
   
-  def index
-    @users = Users.all
-  end
-  
   def show
     @user = User.find_by(name: params[:name])
   end
@@ -22,7 +18,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.playchar = 0
     @user.character_limit = 3
-    # @user.characters = 0
     if @user.save
       login @user
       flash[:success] = "Welcome to Realisis, #{@user.name}!"

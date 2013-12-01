@@ -1,0 +1,6 @@
+<li>
+  <span class="message"><%= link_to infraction.desc, user_infraction_path(@user.id, infraction.id), remote: true %></span>
+  <span class="timestamp">
+    Sent <%= time_ago_in_words(infraction.created_at) %> ago
+  </span>
+</li>

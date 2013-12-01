@@ -22,19 +22,17 @@ Realisis::Application.routes.draw do
   match '/register',        to: 'users#new',            via: 'get'
   match '/me',              to: 'users#me',             via: 'get'
   match '/controlpanel',    to: 'users#controlpanel',   via: 'get'
-  match '/:name/tickets',   to: 'tickets#show',         via: 'get'
+  match '/tickets',         to: 'tickets#show',         via: 'get'
   match '/:name/edit',      to: 'users#edit',           via: 'get'
   match '/:name' ,          to: 'users#show',           via: 'get'
-  match '/:name/:username', to: 'characters#show',      via: 'get'
   match '/:name' ,          to: 'users#update',         via: 'patch'
   
   resources :sessions, only: [:new, :create, :destroy]
   resources :relations, only: [:create, :destroy]
   resources :tickets, only: [:new, :create, :destroy]
   resources :users do
-    resources :characters
     resource :lock, only: [:new, :create, :edit, :update, :destroy]
-    resources :infractions, only: [:new, :create, :edit, :update, :destroy]
+    resources :infractions, only: [:new, :create, :show, :edit, :update, :destroy]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

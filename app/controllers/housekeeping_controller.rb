@@ -13,7 +13,8 @@ class HousekeepingController < ApplicationController
     @user = User.find_by_name(params[:name])
     @chat_messages = @user.chat_messages
     @lock = @user.lock
-    @infractions = @user.infractions
+    @infractions = @user.active_infractions
+    @expired_infractions = @user.expired_infractions
   end
   
   def updateuser
@@ -28,47 +29,27 @@ class HousekeepingController < ApplicationController
   end
   
   def tickets
-    @my_tickets = current_user.assigned_tickets
+    @my_tickets = @current_user.tickets
     @open_tickets = Ticket.all.where(open: true, assigned_id: nil)
   end
   
   def showticket
     @ticket = Ticket.find(params[:id])
     @addinfo = JSON.parse(@ticket.addinfo).symbolize_keys
-
   end
   
   def updateticket
     @ticket = Ticket.find(params[:id])
     case params[:commit]
       when "Capture Ticket"
-        @ticket.assigned_id = current_user.id
-        @ticket.save!
+        @ticket.assign_to!(@current_user.id) unless @ticket.assigned?
       when "Release Ticket"
-        @ticket.assigned_id = nil
-        @ticket.save!
+        @ticket.assign_to!(nil) unless !current_user?(@ticket.assigned_id)
       when "Close Ticket"
-        @ticket.action_taken = params[:action_taken]
+        @ticket.action_taken = params[:ticket][:action_taken]
         @ticket.open = false
         @ticket.save!
         redirect_to "/hk/tickets/list"
     end
-
-    respond_to do |format|
-      format.html { redirect_to "hk/tickets/#{@ticket.id}" }
-      format.js
-    end
   end
-
-  def newinf
-
-  end
-
-  def newlock
-
-  end
-
-  private
-  
-
 end
