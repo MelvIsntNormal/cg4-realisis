@@ -16,8 +16,6 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)
-    @user.playchar = 0
-    @user.character_limit = 3
     if @user.save
       login @user
       flash[:success] = "Welcome to Realisis, #{@user.name}!"
