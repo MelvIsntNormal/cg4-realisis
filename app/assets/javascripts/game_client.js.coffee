@@ -1,4 +1,4 @@
-serverloc = 'ws://localhost:8080/'
+serverloc = 'ws://realisis.herokuapp.com/'
 ws = null
 
 $ ->
