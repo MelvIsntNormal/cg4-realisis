@@ -1,4 +1,4 @@
-serverloc = 'ws://realisis.herokuapp.com/'
+serverloc = location.origin.replace(/^http/, 'wss')
 ws = null
 
 $ ->
