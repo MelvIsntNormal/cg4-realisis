@@ -1,4 +1,4 @@
-serverloc = location.origin.replace(/^http/, 'wss')
+serverloc = location.origin.replace(/^https/, 'wss')
 ws = null
 
 $ ->
