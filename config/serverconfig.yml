@@ -9,6 +9,6 @@ test:
   debug: true
 
 production:
-  host: realisis.herokuapp.com
-  port: 8080
+  host: localhost
+  port: 42720
   debug: false
