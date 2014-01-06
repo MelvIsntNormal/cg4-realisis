@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>relation.rb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,51); }
+.s1 { color: rgb(230,225,220); }
+.s2 { color: rgb(109,156,190); }
+.s3 { color: rgb(204,120,50); }
+.s4 { color: rgb(165,194,97); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+relation.rb</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<a name="l1"><span class="ln">1    </span></a><span class="s0">class </span><span class="s2">Relation </span><span class="s0">&lt; </span><span class="s2">ActiveRecord</span><span class="s1">::</span><span class="s2">Base</span><span class="s1"> 
+<a name="l2"><span class="ln">2    </span></a>  belongs_to </span><span class="s2">:owner</span><span class="s3">, </span><span class="s1">class_name: </span><span class="s4">&quot;User&quot;</span><span class="s1"> 
+<a name="l3"><span class="ln">3    </span></a>  belongs_to </span><span class="s2">:character</span><span class="s3">, </span><span class="s1">class_name: </span><span class="s4">&quot;User&quot;</span><span class="s1"> 
+<a name="l4"><span class="ln">4    </span></a>  validates </span><span class="s2">:owner_id</span><span class="s3">, </span><span class="s1">presence: </span><span class="s0">true</span><span class="s1"> 
+<a name="l5"><span class="ln">5    </span></a>  validates </span><span class="s2">:character_id</span><span class="s3">, </span><span class="s1">presence: </span><span class="s0">true</span><span class="s1"> 
+<a name="l6"><span class="ln">6    </span></a></span><span class="s0">end</span><span class="s1"> 
+<a name="l7"><span class="ln">7    </span></a></span></pre>
+</body>
+</html>

@@ -1,21 +1,33 @@
+<!--Auto Generated Code starts here-->
 <!DOCTYPE html>
 <html>
 	<head>
+      <!--Not auto-generated: sets title using string provided by page-->
   		<title><%= yield(:title) %> | Realisis</title>
   		<%= stylesheet_link_tag    "application/application", media: "all", "data-turbolinks-track" => true %>
   		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+        <!--Not auto-generated: activates the sidebar-->
   		<%= javascript_include_tag "cp" %>
+        <!--Not auto-generated: Allows app to be compatible with Internet Explorer-->
   		<%= render 'shared/shim' %>
   		<%= csrf_meta_tags %>
 	</head>
+    <!--Auto Generated Code ends here-->
 	<body>
+        <!--Render the app header-->
 		<%= render 'shared/header' %>
+        <!--Render the sidebar-->
 		<%= render 'shared/aside' %>
+        <!--Declare the main division-->
 		<div id="main">
+            <!--Declare an inner division to house description-->
 			<div class="buffer">
+              <!--Outputs string provided by page-->
 				<%= yield(:pagetitle) %>
 			</div>
+            <!--Render any flash notifications-->
 			<%= render 'shared/flash' %>
+            <!--Render page content-->
     		<%= yield %>
     	</div>
 	</body>

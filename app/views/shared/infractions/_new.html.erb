@@ -1,27 +1,39 @@
 Remember: If you only need to lock the account, use the Lock Account link above
+<!--Form Helper for a new infraction-->
 <%= form_for @infraction, url: user_infractions_path, method: :post, remote: true do |f| %>
+    <!--Declare unordered list-->
     <ul>
+      <!--Declare list item-->
       <li>
+        <!--Render a text box and tooltip for the description-->
         <%= f.text_field :desc, required: true, placeholder: "Description" %>
         <span class="tooltip">Briefly explain why this infraction is necessary</span>
       </li>
 
+      <!--Declare list item-->
       <li>
+        <!--Render a number spinner to give points-->
         <%= f.number_field :points, required: true, placeholder: "Points", min: 0, max: 20 %>
         <span class="tooltip">Necessary number of points to be given. You cannot award more than 20 points at a time</span>
       </li>
 
+      <!--Declare list item-->
       <li>
+        <!--Render a checkbox to determine whether the lock is permanent-->
         <%= f.check_box :permanent%>
         <span class="tooltip">This will place a permanent infraction on the account. Only use if there are serious issues with the account. Specify the reason for a permanent infraction in the description.</span>
       </li>
 
+      <!--Declare a list item-->
       <li>
+        <!--Render submit button to give lock and infraction-->
         <%= f.submit "Lock Account", class: "submit" %>
         <span class="tooltip">Add a lock to the account with the same information as above. If the infraction is permanent, the lock will also be permanent. You can edit this above.</span>
       </li>
 
+      <!--Declare a list item-->
       <li>
+        <!--Render submit button to give only an infraction-->
         <%= f.submit "Give Infraction", class: "submit" %>
       </li>
     </ul>

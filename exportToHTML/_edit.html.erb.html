@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>_edit.html.erb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(230,225,220); }
+.s1 { color: rgb(232,191,106); }
+.s2 { color: rgb(230,225,220); }
+.s3 { color: rgb(208,208,255); }
+.s4 { color: rgb(204,120,50); }
+.s5 { color: rgb(109,156,190); }
+.s6 { color: rgb(204,120,51); }
+.s7 { color: rgb(165,194,97); }
+.s8 { color: rgb(165,194,97); font-weight: bold; }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+_edit.html.erb</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<a name="l1"><span class="ln">1    </span></a><span class="s0">Remember: Editing an infraction will reset its expiration date 
+<a name="l2"><span class="ln">2    </span></a></span><span class="s1">&lt;%= </span><span class="s0">form_for </span><span class="s3">@infraction</span><span class="s4">, </span><span class="s0">url</span><span class="s2">: </span><span class="s0">user_infraction_path</span><span class="s4">, </span><span class="s0">method</span><span class="s2">: </span><span class="s5">:patch</span><span class="s4">, </span><span class="s0">remote</span><span class="s2">: </span><span class="s6">true do |</span><span class="s0">f</span><span class="s6">| </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l3"><span class="ln">3    </span></a>    &lt;</span><span class="s1">ul</span><span class="s0">&gt; 
+<a name="l4"><span class="ln">4    </span></a>      &lt;</span><span class="s1">li</span><span class="s0">&gt; 
+<a name="l5"><span class="ln">5    </span></a>        </span><span class="s1">&lt;%= </span><span class="s0">f</span><span class="s2">.</span><span class="s0">text_field </span><span class="s5">:desc</span><span class="s4">, </span><span class="s0">required</span><span class="s2">: </span><span class="s6">true</span><span class="s4">, </span><span class="s0">placeholder</span><span class="s2">: </span><span class="s7">&quot;Description&quot; </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l6"><span class="ln">6    </span></a>        &lt;</span><span class="s1">span class=</span><span class="s8">&quot;tooltip&quot;</span><span class="s0">&gt;Briefly explain why this infraction is necessary&lt;/</span><span class="s1">span</span><span class="s0">&gt; 
+<a name="l7"><span class="ln">7    </span></a>      &lt;/</span><span class="s1">li</span><span class="s0">&gt; 
+<a name="l8"><span class="ln">8    </span></a> 
+<a name="l9"><span class="ln">9    </span></a>      &lt;</span><span class="s1">li</span><span class="s0">&gt; 
+<a name="l10"><span class="ln">10   </span></a>        </span><span class="s1">&lt;%= </span><span class="s0">f</span><span class="s2">.</span><span class="s0">number_field </span><span class="s5">:points</span><span class="s4">, </span><span class="s0">required</span><span class="s2">: </span><span class="s6">true</span><span class="s4">, </span><span class="s0">placeholder</span><span class="s2">: </span><span class="s7">&quot;Points&quot;</span><span class="s4">, </span><span class="s0">min</span><span class="s2">: </span><span class="s7">0</span><span class="s4">, </span><span class="s0">max</span><span class="s2">: </span><span class="s7">20 </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l11"><span class="ln">11   </span></a>        &lt;</span><span class="s1">span class=</span><span class="s8">&quot;tooltip&quot;</span><span class="s0">&gt;Necessary number of points to be given. You cannot award more than 20 points at a time&lt;/</span><span class="s1">span</span><span class="s0">&gt; 
+<a name="l12"><span class="ln">12   </span></a>      &lt;/</span><span class="s1">li</span><span class="s0">&gt; 
+<a name="l13"><span class="ln">13   </span></a> 
+<a name="l14"><span class="ln">14   </span></a>      &lt;</span><span class="s1">li</span><span class="s0">&gt; 
+<a name="l15"><span class="ln">15   </span></a>        </span><span class="s1">&lt;%= </span><span class="s0">f</span><span class="s2">.</span><span class="s0">check_box </span><span class="s5">:permanent</span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l16"><span class="ln">16   </span></a>        &lt;</span><span class="s1">span class=</span><span class="s8">&quot;tooltip&quot;</span><span class="s0">&gt;This will place a permanent infraction on the account. Only use if there are serious issues with the account. Specify the reason for a permanent infraction in the description.&lt;/</span><span class="s1">span</span><span class="s0">&gt; 
+<a name="l17"><span class="ln">17   </span></a>      &lt;/</span><span class="s1">li</span><span class="s0">&gt; 
+<a name="l18"><span class="ln">18   </span></a> 
+<a name="l19"><span class="ln">19   </span></a>      &lt;</span><span class="s1">li</span><span class="s0">&gt; 
+<a name="l20"><span class="ln">20   </span></a>        </span><span class="s1">&lt;%= </span><span class="s0">f</span><span class="s2">.</span><span class="s0">submit </span><span class="s7">&quot;Update Infraction&quot;</span><span class="s4">, </span><span class="s0">class</span><span class="s2">: </span><span class="s7">&quot;submit&quot; </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l21"><span class="ln">21   </span></a>      &lt;/</span><span class="s1">li</span><span class="s0">&gt; 
+<a name="l22"><span class="ln">22   </span></a>    &lt;/</span><span class="s1">ul</span><span class="s0">&gt; 
+<a name="l23"><span class="ln">23   </span></a></span><span class="s1">&lt;% </span><span class="s6">end </span><span class="s1">%&gt;</span></pre>
+</body>
+</html>

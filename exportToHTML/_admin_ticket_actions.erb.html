@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>_admin_ticket_actions.erb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(232,191,106); }
+.s1 { color: rgb(230,225,220); }
+.s2 { color: rgb(230,225,220); }
+.s3 { color: rgb(208,208,255); }
+.s4 { color: rgb(204,120,50); }
+.s5 { color: rgb(165,194,97); }
+.s6 { color: rgb(204,120,51); }
+.s7 { color: rgb(109,156,190); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+_admin_ticket_actions.erb</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<a name="l1"><span class="ln">1    </span></a><span class="s0">&lt;%= </span><span class="s2">form_for </span><span class="s3">@ticket</span><span class="s4">, </span><span class="s2">url</span><span class="s1">: </span><span class="s5">&quot;/hk/tickets/#{</span><span class="s3">@ticket</span><span class="s1">.</span><span class="s2">id</span><span class="s5">}&quot;</span><span class="s4">, </span><span class="s2">method</span><span class="s1">: </span><span class="s5">&quot;patch&quot;</span><span class="s4">, </span><span class="s2">remote</span><span class="s1">: </span><span class="s6">true do |</span><span class="s2">f</span><span class="s6">| </span><span class="s0">%&gt;</span><span class="s2"> 
+<a name="l2"><span class="ln">2    </span></a>    </span><span class="s0">&lt;% </span><span class="s6">if </span><span class="s3">@ticket</span><span class="s1">.</span><span class="s2">assigned_id </span><span class="s6">!= nil </span><span class="s0">%&gt;</span><span class="s2"> 
+<a name="l3"><span class="ln">3    </span></a>        </span><span class="s0">&lt;% </span><span class="s6">if </span><span class="s3">@ticket</span><span class="s1">.</span><span class="s2">assigned_id </span><span class="s6">== </span><span class="s2">current_user</span><span class="s1">.</span><span class="s2">id </span><span class="s0">%&gt;</span><span class="s2"> 
+<a name="l4"><span class="ln">4    </span></a>            </span><span class="s0">&lt;%= </span><span class="s2">f</span><span class="s1">.</span><span class="s2">submit </span><span class="s5">'Release Ticket'</span><span class="s4">, </span><span class="s2">class</span><span class="s1">: </span><span class="s5">&quot;submit&quot; </span><span class="s0">%&gt;</span><span class="s2"> 
+<a name="l5"><span class="ln">5    </span></a>        </span><span class="s0">&lt;% </span><span class="s6">end </span><span class="s0">%&gt;</span><span class="s2"> 
+<a name="l6"><span class="ln">6    </span></a>    </span><span class="s0">&lt;% </span><span class="s6">else </span><span class="s0">%&gt;</span><span class="s2"> 
+<a name="l7"><span class="ln">7    </span></a>        </span><span class="s0">&lt;%= </span><span class="s2">f</span><span class="s1">.</span><span class="s2">submit </span><span class="s5">'Capture Ticket'</span><span class="s4">, </span><span class="s2">class</span><span class="s1">: </span><span class="s5">&quot;submit&quot; </span><span class="s0">%&gt;</span><span class="s2"> 
+<a name="l8"><span class="ln">8    </span></a>    </span><span class="s0">&lt;% </span><span class="s6">end </span><span class="s0">%&gt;</span><span class="s2"> 
+<a name="l9"><span class="ln">9    </span></a></span><span class="s0">&lt;% </span><span class="s6">end </span><span class="s0">%&gt;</span><span class="s2"> 
+<a name="l10"><span class="ln">10   </span></a> 
+<a name="l11"><span class="ln">11   </span></a></span><span class="s0">&lt;% </span><span class="s6">if </span><span class="s3">@ticket</span><span class="s1">.</span><span class="s2">assigned_id </span><span class="s6">== </span><span class="s2">current_user</span><span class="s1">.</span><span class="s2">id </span><span class="s0">%&gt;</span><span class="s2"> 
+<a name="l12"><span class="ln">12   </span></a>    </span><span class="s0">&lt;%= </span><span class="s2">form_for </span><span class="s3">@ticket</span><span class="s4">, </span><span class="s2">url</span><span class="s1">: </span><span class="s5">&quot;/hk/tickets/#{</span><span class="s3">@ticket</span><span class="s1">.</span><span class="s2">id</span><span class="s5">}&quot;</span><span class="s4">, </span><span class="s2">method</span><span class="s1">: </span><span class="s5">&quot;patch&quot; </span><span class="s6">do |</span><span class="s2">f</span><span class="s6">| </span><span class="s0">%&gt;</span><span class="s2"> 
+<a name="l13"><span class="ln">13   </span></a>        </span><span class="s0">&lt;%= </span><span class="s2">f</span><span class="s1">.</span><span class="s2">text_field </span><span class="s7">:action_taken</span><span class="s4">, </span><span class="s2">required</span><span class="s1">: </span><span class="s6">true</span><span class="s4">, </span><span class="s2">placeholder</span><span class="s1">: </span><span class="s5">&quot;Action taken...&quot; </span><span class="s0">%&gt;</span><span class="s2"> 
+<a name="l14"><span class="ln">14   </span></a>        </span><span class="s0">&lt;%= </span><span class="s2">f</span><span class="s1">.</span><span class="s2">submit </span><span class="s5">&quot;Close Ticket&quot;</span><span class="s4">, </span><span class="s2">class</span><span class="s1">: </span><span class="s5">&quot;submit&quot;</span><span class="s4">, </span><span class="s2">data</span><span class="s1">: { 
+<a name="l15"><span class="ln">15   </span></a>                </span><span class="s2">confirm</span><span class="s1">: </span><span class="s5">&quot;Are you sure you wish to close this ticket? It cannot be re-opened again.&quot; </span><span class="s1">} </span><span class="s0">%&gt;</span><span class="s2"> 
+<a name="l16"><span class="ln">16   </span></a>    </span><span class="s0">&lt;% </span><span class="s6">end </span><span class="s0">%&gt;</span><span class="s2"> 
+<a name="l17"><span class="ln">17   </span></a></span><span class="s0">&lt;% </span><span class="s6">end </span><span class="s0">%&gt;</span></pre>
+</body>
+</html>

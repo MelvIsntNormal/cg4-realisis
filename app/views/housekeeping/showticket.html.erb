@@ -1,26 +1,40 @@
+<!--Declare division for general information-->
 <div id="general">
+  <!--Declare inner division for information-->
   <div class="inner-divide" id="Info">
+    <!--Output the title of the ticket-->
     <b><%= @ticket.title %></b> <br>
+    <!--Output the dates and times of their creation and updates-->
     Created: <%= @ticket.created_at.to_s %> <br>
     Last Update: <%= @ticket.updated_at.to_s %> <br>
   </div>
 
+  <!--Declare an inner division for the ticket description-->
   <div class="inner-divide" id="Description">
+    <!--Output the description-->
     <%= @ticket.desc %>
   </div>
 
+  <!--If there is any users tagged in the report-->
   <% if @addinfo[:tagged_users].any? %>
+      <!--Declare an inner division for tagged users-->
       <div class="inner-divide" id="Tagged-Users">
+        <!--Output the number of users tagged in the report-->
         <%= pluralize @addinfo[:tagged_users].count, "user has", "users have" %> been tagged in this report:
+        <!--Declare an unordered list-->
         <ul>
+          <!--For each user tagged in the report-->
           <% @addinfo[:tagged_users].each do |user| %>
+              <!--Output a link to their housekeeping page-->
               <li><%= link_to user, "/hk/users/#{user}", target: "_blank" %></li>
           <% end %>
         </ul>
       </div>
   <% end %>
 
+  <!--Declare an inner division for admin actions-->
   <div class="inner-divide" id="Actions">
+    <!--Render the admin actions partial-->
     <%= render('shared/hk/admin_ticket_actions') unless !@ticket.open? %>
   </div>
 

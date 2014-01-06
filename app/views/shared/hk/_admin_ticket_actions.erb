@@ -1,16 +1,25 @@
+<!--Form Heper: capture and release buttons for tickets-->
 <%= form_for @ticket, url: "/hk/tickets/#{@ticket.id}", method: "patch", remote: true do |f| %>
+    <!--If the tickt is assigned to someone-->
     <% if @ticket.assigned_id != nil %>
+        <!--If the ticket is assigned to the current user-->
         <% if @ticket.assigned_id == current_user.id %>
+            <!--Render the release button-->
             <%= f.submit 'Release Ticket', class: "submit" %>
         <% end %>
     <% else %>
+        <!--Render the capture button-->
         <%= f.submit 'Capture Ticket', class: "submit" %>
     <% end %>
 <% end %>
 
+<!--If the ticket is assigned to the current user-->
 <% if @ticket.assigned_id == current_user.id %>
+    <!--Form Helper: Renders the form that will close the ticket-->
     <%= form_for @ticket, url: "/hk/tickets/#{@ticket.id}", method: "patch" do |f| %>
+        <!--Renders a text field to describe action taken-->
         <%= f.text_field :action_taken, required: true, placeholder: "Action taken..." %>
+        <!--Renders a submit button with a confirmation message on clicking it-->
         <%= f.submit "Close Ticket", class: "submit", data: {
                 confirm: "Are you sure you wish to close this ticket? It cannot be re-opened again." } %>
     <% end %>

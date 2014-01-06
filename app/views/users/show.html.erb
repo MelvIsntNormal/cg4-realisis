@@ -1,13 +1,13 @@
+<!--Provide page information-->
 <% provide(:title, @user.name) %>
 <% provide(:pagetitle, @user.name) %>
 
+<!--Declare division for editing relationships-->
 <div id="relation">
-<%= render'shared/relation' unless current_user?(@user)%>
+    Render the relation buttons unless the user is viewing their own profile
+    <%= render'shared/relation' unless current_user?(@user)%>
 </div>
+<!--Declare psuedo division for player stats-->
 <div id="stats">
 	Player Statistics will appear here.
-</div>
-
-<div id="characters">
-	Player Characters will appear here.
 </div>

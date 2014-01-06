@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>_friends.html.erb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(230,225,220); }
+.s1 { color: rgb(232,191,106); }
+.s2 { color: rgb(165,194,97); font-weight: bold; }
+.s3 { color: rgb(230,225,220); }
+.s4 { color: rgb(208,208,255); }
+.s5 { color: rgb(204,120,51); }
+.s6 { color: rgb(165,194,97); }
+.s7 { color: rgb(204,120,50); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+_friends.html.erb</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<a name="l1"><span class="ln">1    </span></a><span class="s0">&lt;</span><span class="s1">ul id=</span><span class="s2">&quot;friendlist&quot;</span><span class="s0">&gt; 
+<a name="l2"><span class="ln">2    </span></a>    </span><span class="s1">&lt;% </span><span class="s4">@friends </span><span class="s5">= </span><span class="s0">current_user</span><span class="s3">.</span><span class="s0">friends</span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l3"><span class="ln">3    </span></a>    </span><span class="s1">&lt;% </span><span class="s4">@friend_requests </span><span class="s5">= </span><span class="s0">current_user</span><span class="s3">.</span><span class="s0">friend_requests</span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l4"><span class="ln">4    </span></a>    </span><span class="s1">&lt;% </span><span class="s5">if </span><span class="s4">@friend_requests</span><span class="s3">.any? </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l5"><span class="ln">5    </span></a>        </span><span class="s1">&lt;% </span><span class="s4">@friend_requests</span><span class="s3">.</span><span class="s0">each </span><span class="s5">do |</span><span class="s0">r</span><span class="s5">| </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l6"><span class="ln">6    </span></a>            &lt;</span><span class="s1">li class=</span><span class="s2">&quot;friend-request-cp&quot;</span><span class="s0">&gt;</span><span class="s1">&lt;%= </span><span class="s0">link_to </span><span class="s6">&quot;Friend Request from #{</span><span class="s0">r</span><span class="s3">.</span><span class="s0">name</span><span class="s6">}&quot;</span><span class="s7">, </span><span class="s6">&quot;/#{</span><span class="s0">r</span><span class="s3">.</span><span class="s0">name</span><span class="s6">}&quot; </span><span class="s1">%&gt;</span><span class="s0">&lt;/</span><span class="s1">li</span><span class="s0">&gt; 
+<a name="l7"><span class="ln">7    </span></a>        </span><span class="s1">&lt;% </span><span class="s5">end </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l8"><span class="ln">8    </span></a>    </span><span class="s1">&lt;% </span><span class="s5">end </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l9"><span class="ln">9    </span></a>    </span><span class="s1">&lt;% </span><span class="s5">if </span><span class="s4">@friends</span><span class="s3">.any? </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l10"><span class="ln">10   </span></a>        </span><span class="s1">&lt;% </span><span class="s4">@friends</span><span class="s3">.</span><span class="s0">each </span><span class="s5">do |</span><span class="s0">r</span><span class="s5">| </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l11"><span class="ln">11   </span></a>            &lt;</span><span class="s1">li class=</span><span class="s2">&quot;friend-cp&quot;</span><span class="s0">&gt;</span><span class="s1">&lt;%= </span><span class="s0">link_to </span><span class="s6">&quot;#{</span><span class="s0">r</span><span class="s3">.</span><span class="s0">name</span><span class="s6">}&quot;</span><span class="s7">, </span><span class="s6">&quot;/#{</span><span class="s0">r</span><span class="s3">.</span><span class="s0">name</span><span class="s6">}&quot; </span><span class="s1">%&gt;</span><span class="s0">&lt;/</span><span class="s1">li</span><span class="s0">&gt; 
+<a name="l12"><span class="ln">12   </span></a>        </span><span class="s1">&lt;% </span><span class="s5">end </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l13"><span class="ln">13   </span></a>    </span><span class="s1">&lt;% </span><span class="s5">end </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l14"><span class="ln">14   </span></a>&lt;/</span><span class="s1">ul</span><span class="s0">&gt; 
+<a name="l15"><span class="ln">15   </span></a></span></pre>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>play.html.erb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(230,225,220); }
+.s1 { color: rgb(232,191,106); }
+.s2 { color: rgb(230,225,220); }
+.s3 { color: rgb(165,194,97); }
+.s4 { color: rgb(204,120,50); }
+.s5 { color: rgb(204,120,51); }
+.s6 { color: rgb(165,194,97); font-weight: bold; }
+.s7 { color: rgb(208,208,255); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+play.html.erb</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<a name="l1"><span class="ln">1    </span></a><span class="s0">&lt;!DOCTYPE </span><span class="s1">HTML</span><span class="s0">&gt; 
+<a name="l2"><span class="ln">2    </span></a>&lt;</span><span class="s1">html</span><span class="s0">&gt; 
+<a name="l3"><span class="ln">3    </span></a>    &lt;</span><span class="s1">head</span><span class="s0">&gt; 
+<a name="l4"><span class="ln">4    </span></a>        &lt;</span><span class="s1">title</span><span class="s0">&gt;Play! | Realisis&lt;/</span><span class="s1">title</span><span class="s0">&gt; 
+<a name="l5"><span class="ln">5    </span></a>        </span><span class="s1">&lt;%= </span><span class="s0">include_gon </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l6"><span class="ln">6    </span></a>        </span><span class="s1">&lt;%= </span><span class="s0">stylesheet_link_tag    </span><span class="s3">&quot;game_client&quot;</span><span class="s4">, </span><span class="s0">media</span><span class="s2">: </span><span class="s3">&quot;all&quot;</span><span class="s4">, </span><span class="s3">&quot;data-turbolinks-track&quot; </span><span class="s5">=&gt; true </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l7"><span class="ln">7    </span></a>        </span><span class="s1">&lt;%= </span><span class="s0">javascript_include_tag </span><span class="s3">&quot;application&quot;</span><span class="s4">, </span><span class="s3">&quot;data-turbolinks-track&quot; </span><span class="s5">=&gt; true </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l8"><span class="ln">8    </span></a>        </span><span class="s1">&lt;%= </span><span class="s0">javascript_include_tag </span><span class="s3">&quot;game_client&quot; </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l9"><span class="ln">9    </span></a>        </span><span class="s1">&lt;%= </span><span class="s0">render </span><span class="s3">'shared/shim' </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l10"><span class="ln">10   </span></a>        </span><span class="s1">&lt;%= </span><span class="s0">csrf_meta_tags </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l11"><span class="ln">11   </span></a>    &lt;/</span><span class="s1">head</span><span class="s0">&gt; 
+<a name="l12"><span class="ln">12   </span></a>    &lt;</span><span class="s1">body</span><span class="s0">&gt; 
+<a name="l13"><span class="ln">13   </span></a>        &lt;</span><span class="s1">section id=</span><span class="s6">&quot;room&quot;</span><span class="s0">&gt; 
+<a name="l14"><span class="ln">14   </span></a>             
+<a name="l15"><span class="ln">15   </span></a>        &lt;/</span><span class="s1">section</span><span class="s0">&gt; 
+<a name="l16"><span class="ln">16   </span></a>        &lt;</span><span class="s1">section id=</span><span class="s6">&quot;users&quot;</span><span class="s0">&gt; 
+<a name="l17"><span class="ln">17   </span></a>             
+<a name="l18"><span class="ln">18   </span></a>        &lt;/</span><span class="s1">section</span><span class="s0">&gt; 
+<a name="l19"><span class="ln">19   </span></a>        &lt;</span><span class="s1">section id=</span><span class="s6">&quot;friends&quot;</span><span class="s0">&gt; 
+<a name="l20"><span class="ln">20   </span></a>             
+<a name="l21"><span class="ln">21   </span></a>        &lt;/</span><span class="s1">section</span><span class="s0">&gt; 
+<a name="l22"><span class="ln">22   </span></a>        &lt;</span><span class="s1">section id=</span><span class="s6">&quot;chat-bar&quot;</span><span class="s0">&gt; 
+<a name="l23"><span class="ln">23   </span></a>            </span><span class="s1">&lt;%= </span><span class="s0">form_for</span><span class="s2">(</span><span class="s7">@chat_message</span><span class="s4">, </span><span class="s0">html</span><span class="s2">: { </span><span class="s0">id</span><span class="s2">: </span><span class="s3">&quot;new_message&quot; </span><span class="s2">}) </span><span class="s5">do |</span><span class="s0">f</span><span class="s5">| </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l24"><span class="ln">24   </span></a>                &lt;</span><span class="s1">input type=</span><span class="s6">&quot;text&quot; </span><span class="s1">id=</span><span class="s6">&quot;mymsg&quot; </span><span class="s1">maxlength=</span><span class="s6">140 </span><span class="s1">placeholder=</span><span class="s6">&quot;Give us a second...&quot; </span><span class="s1">disabled</span><span class="s0">&gt; 
+<a name="l25"><span class="ln">25   </span></a>                &lt;</span><span class="s1">input type=</span><span class="s6">&quot;submit&quot; </span><span class="s1">text=</span><span class="s6">&quot;Send&quot; </span><span class="s1">id=</span><span class="s6">&quot;btnSend&quot;</span><span class="s0">&gt; 
+<a name="l26"><span class="ln">26   </span></a>            </span><span class="s1">&lt;% </span><span class="s5">end </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l27"><span class="ln">27   </span></a>        &lt;/</span><span class="s1">section</span><span class="s0">&gt; 
+<a name="l28"><span class="ln">28   </span></a>    &lt;/</span><span class="s1">body</span><span class="s0">&gt; 
+<a name="l29"><span class="ln">29   </span></a>&lt;/</span><span class="s1">html</span><span class="s0">&gt; 
+<a name="l30"><span class="ln">30   </span></a></span></pre>
+</body>
+</html>

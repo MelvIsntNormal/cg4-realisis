@@ -1,8 +1,13 @@
+<!--Outptuhow many points the infraction is worth and who gave the infraction-->
 Infraction worth <%= pluralize @infraction.points.to_s, "point" %> given by <%= User.find(@infraction.admin_id).name %><br>
+<!--Output reason for the infraction-->
 Reason: <%= @infraction.desc %> <br>
+<!--If the infraction is permanent-->
 <% if @infraction.permanent? %>
     This infraction is permanent. <br>
 <% else %>
+    <!--Show the time until it expires and the date it expires-->
     Expires in <%= distance_of_time_in_words_to_now(@infraction.expires_at) %> on <%= @infraction.expires_at %> <br>
 <% end %>
+<!--Render link to edit the infraction-->
 <%= link_to "Edit Infraction", edit_user_infraction_path(@infraction.user_id, @infraction.id), remote: true %>

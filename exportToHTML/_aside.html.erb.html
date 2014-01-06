@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>_aside.html.erb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(230,225,220); }
+.s1 { color: rgb(232,191,106); }
+.s2 { color: rgb(230,225,220); }
+.s3 { color: rgb(204,120,51); }
+.s4 { color: rgb(165,194,97); font-weight: bold; }
+.s5 { color: rgb(110,156,190); }
+.s6 { color: rgb(165,194,97); }
+.s7 { color: rgb(165,194,97); }
+.s8 { color: rgb(109,156,190); }
+.s9 { color: rgb(204,120,50); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+_aside.html.erb</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<a name="l1"><span class="ln">1    </span></a><span class="s0">&lt;</span><span class="s1">aside</span><span class="s0">&gt; 
+<a name="l2"><span class="ln">2    </span></a>    </span><span class="s1">&lt;% </span><span class="s3">if </span><span class="s2">signed_in? </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l3"><span class="ln">3    </span></a>        &lt;</span><span class="s1">div id=</span><span class="s4">&quot;cp&quot; </span><span class="s1">style=</span><span class="s4">&quot;</span><span class="s5">height</span><span class="s0">: </span><span class="s6">100</span><span class="s0">%; </span><span class="s5">width</span><span class="s0">: </span><span class="s6">100</span><span class="s0">%;</span><span class="s4">&quot;</span><span class="s0">&gt; 
+<a name="l4"><span class="ln">4    </span></a>            &lt;</span><span class="s1">h3</span><span class="s0">&gt;Info&lt;/</span><span class="s1">h3</span><span class="s0">&gt; 
+<a name="l5"><span class="ln">5    </span></a>            &lt;</span><span class="s1">div</span><span class="s0">&gt; 
+<a name="l6"><span class="ln">6    </span></a>                You're logged in! Hi, </span><span class="s1">&lt;%= </span><span class="s0">current_user</span><span class="s2">.</span><span class="s0">name </span><span class="s1">%&gt;</span><span class="s0">! 
+<a name="l7"><span class="ln">7    </span></a>            &lt;/</span><span class="s1">div</span><span class="s0">&gt; 
+<a name="l8"><span class="ln">8    </span></a>            &lt;</span><span class="s1">h3</span><span class="s0">&gt;Friends&lt;/</span><span class="s1">h3</span><span class="s0">&gt; 
+<a name="l9"><span class="ln">9    </span></a>            &lt;</span><span class="s1">div id=</span><span class="s4">&quot;friends&quot;</span><span class="s0">&gt; 
+<a name="l10"><span class="ln">10   </span></a>                </span><span class="s1">&lt;% </span><span class="s3">if </span><span class="s0">current_user</span><span class="s2">.</span><span class="s0">relations</span><span class="s2">.any? </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l11"><span class="ln">11   </span></a>                    </span><span class="s1">&lt;%= </span><span class="s0">render </span><span class="s7">'shared/friends' </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l12"><span class="ln">12   </span></a>                </span><span class="s1">&lt;% </span><span class="s3">else </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l13"><span class="ln">13   </span></a>                    None :( Go find some! 
+<a name="l14"><span class="ln">14   </span></a>                </span><span class="s1">&lt;% </span><span class="s3">end </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l15"><span class="ln">15   </span></a>            &lt;/</span><span class="s1">div</span><span class="s0">&gt; 
+<a name="l16"><span class="ln">16   </span></a>        &lt;/</span><span class="s1">div</span><span class="s0">&gt; 
+<a name="l17"><span class="ln">17   </span></a>    </span><span class="s1">&lt;% </span><span class="s3">else </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l18"><span class="ln">18   </span></a>        &lt;</span><span class="s1">div id=</span><span class="s4">&quot;login&quot;</span><span class="s0">&gt; 
+<a name="l19"><span class="ln">19   </span></a>            &lt;</span><span class="s1">div class=</span><span class="s4">&quot;title&quot;</span><span class="s0">&gt;Login&lt;/</span><span class="s1">div</span><span class="s0">&gt; 
+<a name="l20"><span class="ln">20   </span></a>            </span><span class="s1">&lt;%= </span><span class="s0">form_for</span><span class="s2">(</span><span class="s8">:session</span><span class="s9">, </span><span class="s0">url</span><span class="s2">: </span><span class="s0">sessions_path</span><span class="s2">) </span><span class="s3">do |</span><span class="s0">f</span><span class="s3">| </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l21"><span class="ln">21   </span></a>                &lt;</span><span class="s1">ul</span><span class="s0">&gt; 
+<a name="l22"><span class="ln">22   </span></a>                    &lt;</span><span class="s1">li</span><span class="s0">&gt;</span><span class="s1">&lt;%= </span><span class="s0">f</span><span class="s2">.</span><span class="s0">text_field </span><span class="s8">:name</span><span class="s9">, </span><span class="s0">placeholder</span><span class="s2">: </span><span class="s7">&quot;Username&quot; </span><span class="s1">%&gt;</span><span class="s0">&lt;/</span><span class="s1">li</span><span class="s0">&gt; 
+<a name="l23"><span class="ln">23   </span></a>                    &lt;</span><span class="s1">li</span><span class="s0">&gt;</span><span class="s1">&lt;%= </span><span class="s0">f</span><span class="s2">.</span><span class="s0">password_field </span><span class="s8">:password</span><span class="s9">, </span><span class="s0">placeholder</span><span class="s2">: </span><span class="s7">&quot;Password&quot; </span><span class="s1">%&gt;</span><span class="s0">&lt;/</span><span class="s1">li</span><span class="s0">&gt; 
+<a name="l24"><span class="ln">24   </span></a>                    &lt;</span><span class="s1">li</span><span class="s0">&gt;</span><span class="s1">&lt;%= </span><span class="s0">f</span><span class="s2">.</span><span class="s0">submit </span><span class="s7">&quot;Login&quot;</span><span class="s9">, </span><span class="s0">class</span><span class="s2">: </span><span class="s7">&quot;submit&quot; </span><span class="s1">%&gt;</span><span class="s0">&lt;/</span><span class="s1">li</span><span class="s0">&gt; 
+<a name="l25"><span class="ln">25   </span></a>                &lt;/</span><span class="s1">ul</span><span class="s0">&gt; 
+<a name="l26"><span class="ln">26   </span></a>            </span><span class="s1">&lt;% </span><span class="s3">end </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l27"><span class="ln">27   </span></a>        &lt;/</span><span class="s1">div</span><span class="s0">&gt; 
+<a name="l28"><span class="ln">28   </span></a>    </span><span class="s1">&lt;% </span><span class="s3">end </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l29"><span class="ln">29   </span></a>&lt;/</span><span class="s1">aside</span><span class="s0">&gt; 
+<a name="l30"><span class="ln">30   </span></a></span></pre>
+</body>
+</html>

@@ -1,6 +1,9 @@
+<!--Declare List item-->
 <li>
+  <!--Output link to the infraction-->
   <span class="message"><%= link_to infraction.desc, user_infraction_path(@user.id, infraction.id), remote: true %></span>
+  <!--Output the time the infraction was created-->
   <span class="timestamp">
-    Sent <%= time_ago_in_words(infraction.created_at) %> ago
+    Given <%= time_ago_in_words(infraction.created_at) %> ago
   </span>
 </li>

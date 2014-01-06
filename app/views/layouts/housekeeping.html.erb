@@ -1,21 +1,31 @@
+<!--Auto Generated Code starts here-->
 <!DOCTYPE html>
 <html>
-	<head>
-  		<title><%= yield(:title) %> | Housekeeping | Realisis</title>
-  		<%= stylesheet_link_tag    "application/application", media: "all", "data-turbolinks-track" => true %>
-        <%= stylesheet_link_tag    'housekeeping', "data-turbolinks-track" => true %>
-  		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  		<%= render 'shared/shim' %>
-  		<%= csrf_meta_tags %>
-	</head>
-	<body>
-		<%= render 'shared/hk/header' %>
-		<div id="main">
-			<div class="buffer">
-				<%= yield(:pagetitle) %>
-			</div>
-			<%= render 'shared/flash' %>
-    		<%= yield %>
-    	</div>
-	</body>
+<head>
+  <!--Not auto-generated: sets title using string provided by page-->
+  <title><%= yield(:title) %> | Housekeeping | Realisis</title>
+  <%= stylesheet_link_tag    "application/application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    'housekeeping', "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <!--Not auto-generated: Allows app to be compatible with Internet Explorer-->
+  <%= render 'shared/shim' %>
+  <%= csrf_meta_tags %>
+</head>
+<!--Auto Generated Code ends here-->
+<body>
+<!--Render the app header-->
+<%= render 'shared/hk/header' %>
+<!--Declare the main division-->
+<div id="main">
+  <!--Declare an inner division to house description-->
+  <div class="buffer">
+    <!--Outputs string provided by page-->
+    <%= yield(:pagetitle) %>
+  </div>
+  <!--Render any flash notifications-->
+  <%= render 'shared/flash' %>
+  <!--Render page content-->
+  <%= yield %>
+</div>
+</body>
 </html>

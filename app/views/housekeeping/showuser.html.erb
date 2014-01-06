@@ -1,27 +1,42 @@
+<!--Provide the title of the page with the users name-->
 <% provide(:title, "Editing #{@user.name}") %>
+<!--Provide the description of the page with the user's name-->
 <% provide(:pagetitle, "Editing #{@user.name}") %>
 
+<!--Decare a division for general information-->
 <div id="general">
+  <!--Declare an inner division for information-->
   <div class="inner-divide" id="Info">
+    <!--Output the user's name-->
     Name: <%= @user.name %> <br>
+    <!--Output the dates and times of creation and updates-->
     Created: <%= @user.created_at.to_s %> <br>
     Last Update: <%= @user.updated_at.to_s %> <br>
   </div>
 
+  <!--Declare an inner division for admin actions-->
   <div class="inner-divide" id="Actions">
+    <!--Render the admin actions partial-->
     <%= render('shared/hk/admin_user_actions') unless current_user?(@user) %>
   </div>
 
 </div>
 
+<!--Declare a division that handles sanctions (locks andinfractions)-->
 <div id="infractions">
+  <!--Render the sanctions partial-->
   <%= render 'shared/hk/sanction' %>
 </div>
 
+<!--If the user has sent any chat messages-->
 <% if @user.chat_messages.any? %>
+    <!--Declare a division to list messages-->
     <div id="messages">
+      <!--Output the number of messages sent-->
       Sent <%= pluralize(@chat_messages.count, 'message') %>: <br>
+      <!--Declare an ordered list for chat messages-->
       <ol class="list-my-messages">
+        <!--Render all chat messages-->
         <%= render @chat_messages %>
       </ol>
     </div>

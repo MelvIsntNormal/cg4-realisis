@@ -1,11 +1,17 @@
+<!--Declare list item-->
 <li>
+  <!--Output title of ticket-->
   <span class="title"><%= ticket.title %></span><br>
+  <!--If the ticket is closed-->
   <% unless ticket.open? %>
-  <span class="title"> Moderator's comment: <%= ticket.action_taken %> </span><br>
+      <!--Output moderators response-->
+      <span class="title"> Moderator's comment: <%= ticket.action_taken %> </span><br>
   <% end %>
+  <!--Show time elapsed since opened-->
   <span class="timestamp">
     Opened <%= time_ago_in_words(ticket.created_at) %> ago
   </span><br>
+  <!--SHow time elapsed since last update-->
   <span class="timestamp">
     Last updated <%= time_ago_in_words(ticket.updated_at) %> ago
   </span><br>

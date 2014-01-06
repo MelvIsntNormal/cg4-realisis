@@ -1,17 +1,25 @@
 Remember: Editing a lock will reset its expiration date
+<!--Form Helper for editing a lock-->
 <%= form_for @lock, url: user_lock_path, method: :patch, remote: true do |f| %>
+    <!--Declare unordered list-->
     <ul>
+      <!--Declare list item-->
       <li>
+        <!--Render text box for lock description-->
         <%= f.text_field :desc, required: true, placeholder: "Description" %>
         <span class="tooltip">Briefly explain why this lock is necessary</span>
       </li>
 
+      <!--Declare list Item-->
       <li>
+        <!--Render checkbox to determine whether the lock will be permanent-->
         <%= f.check_box :permanent%>
         <span class="tooltip">This will permanently lock the account. Only use if there are serious and/or unresolved issues with the account. Specify the reason for a permanent lock in the description.</span>
       </li>
 
+      <!--Declare list item-->
       <li>
+        <!--Render submit button to update the lock-->
         <%= f.submit "Update Lock", class: "submit" %>
       </li>
     </ul>

@@ -1,18 +1,29 @@
+<!--Declare unordered list-->
 <ul>
+  <!--Declare list item-->
   <li>
+    <!--Form Helper for altering admin rights-->
     <%= form_for @user, url: "/hk/users/#{@user.name}", method: "patch", remote: true do |f| %>
+        <!--Hidden field for the user ID-->
         <%= f.hidden_field :id %>
+        <!--If the user id an admin-->
         <% if @user.admin? %>
+            <!--Renfer the Remove Admin button-->
             <%= f.submit "Remove Admin", class: "submit" %>
         <% else %>
+            <!--Render the add admin button-->
             <%= f.submit "Add Admin", class: "submit" %>
         <% end %>
     <% end %>
   </li>
 
+  <!--Declare list item-->
   <li>
+    <!--Form Helper for deleting the account-->
     <%= form_for @user, url: "/hk/users/#{@user.name}/rm", method: "delete" do |f| %>
+        <!--Hidden field for user ID-->
         <%= f.hidden_field :id %>
+        <!--Renders the Delete account button with a confirmation message-->
         <%= f.submit "Delete Account", class: "submit", data: {
                 confirm: "You are about to delete #{@user.name}'s account, including all characters and their associated data. This will also nullify any help tickets and moderation requests that they have sent. In the case of an administrator being deleted, any tickets that they are assigned to will also be nullified, and freed. This action cannot be undone. Are you absolutely sure that you wish to PERMANENTLY delete this account?'" } %>
     <% end %>

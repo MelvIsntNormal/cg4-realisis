@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>front.css.scss</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(128,0,128); font-weight: bold; }
+.s1 { color: rgb(230,225,220); }
+.s2 { color: rgb(165,194,97); }
+.s3 { color: rgb(204,120,51); }
+.s4 { color: rgb(232,191,106); }
+.s5 { color: rgb(110,156,190); }
+.s6 { color: rgb(165,194,97); font-weight: bold; }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+front.css.scss</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<a name="l1"><span class="ln">1    </span></a><span class="s0">$darkPurple</span><span class="s1">: </span><span class="s2">rgba</span><span class="s1">(</span><span class="s2">67</span><span class="s1">, </span><span class="s2">16</span><span class="s1">, </span><span class="s2">82</span><span class="s1">, </span><span class="s2">1</span><span class="s1">); 
+<a name="l2"><span class="ln">2    </span></a></span><span class="s0">$lightPurple</span><span class="s1">: </span><span class="s2">rgba</span><span class="s1">(</span><span class="s2">134</span><span class="s1">, </span><span class="s2">28</span><span class="s1">, </span><span class="s2">163</span><span class="s1">, </span><span class="s2">1</span><span class="s1">); 
+<a name="l3"><span class="ln">3    </span></a> 
+<a name="l4"><span class="ln">4    </span></a></span><span class="s3">@import </span><span class="s2">'application/form'</span><span class="s1">; 
+<a name="l5"><span class="ln">5    </span></a></span><span class="s3">@import </span><span class="s2">'application/mixin'</span><span class="s1">; 
+<a name="l6"><span class="ln">6    </span></a> 
+<a name="l7"><span class="ln">7    </span></a></span><span class="s4">body </span><span class="s1">{ 
+<a name="l8"><span class="ln">8    </span></a>  </span><span class="s5">margin</span><span class="s1">: </span><span class="s2">0</span><span class="s1">; 
+<a name="l9"><span class="ln">9    </span></a>  </span><span class="s5">padding</span><span class="s1">: </span><span class="s2">0</span><span class="s1">; 
+<a name="l10"><span class="ln">10   </span></a>  </span><span class="s5">background-color</span><span class="s1">: </span><span class="s0">$darkPurple</span><span class="s1">; 
+<a name="l11"><span class="ln">11   </span></a>  </span><span class="s5">font-family</span><span class="s1">: </span><span class="s4">verdana</span><span class="s1">; 
+<a name="l12"><span class="ln">12   </span></a>} 
+<a name="l13"><span class="ln">13   </span></a> 
+<a name="l14"><span class="ln">14   </span></a></span><span class="s4">#center-box </span><span class="s1">{ 
+<a name="l15"><span class="ln">15   </span></a>  </span><span class="s5">width</span><span class="s1">: </span><span class="s2">700</span><span class="s6">px</span><span class="s1">; 
+<a name="l16"><span class="ln">16   </span></a>  </span><span class="s5">height</span><span class="s1">: </span><span class="s2">175</span><span class="s6">px</span><span class="s1">; 
+<a name="l17"><span class="ln">17   </span></a>  </span><span class="s5">background-color</span><span class="s1">: </span><span class="s0">$lightPurple</span><span class="s1">; 
+<a name="l18"><span class="ln">18   </span></a>  </span><span class="s5">padding</span><span class="s1">: </span><span class="s2">10</span><span class="s6">px</span><span class="s1">; 
+<a name="l19"><span class="ln">19   </span></a>  </span><span class="s5">margin</span><span class="s1">: </span><span class="s2">0</span><span class="s6">px</span><span class="s1">; 
+<a name="l20"><span class="ln">20   </span></a>   
+<a name="l21"><span class="ln">21   </span></a>  </span><span class="s5">font-family</span><span class="s1">: </span><span class="s4">arial</span><span class="s1">; 
+<a name="l22"><span class="ln">22   </span></a>  </span><span class="s5">text-align</span><span class="s1">: </span><span class="s6">center</span><span class="s1">; 
+<a name="l23"><span class="ln">23   </span></a>  </span><span class="s5">color</span><span class="s1">: </span><span class="s4">#FFFFFF</span><span class="s1">; 
+<a name="l24"><span class="ln">24   </span></a>   
+<a name="l25"><span class="ln">25   </span></a>  </span><span class="s3">@include </span><span class="s2">rounded-corners</span><span class="s1">(</span><span class="s2">10</span><span class="s6">px</span><span class="s1">); 
+<a name="l26"><span class="ln">26   </span></a>  </span><span class="s3">@include </span><span class="s2">shadow</span><span class="s1">(</span><span class="s2">4</span><span class="s6">px</span><span class="s1">, </span><span class="s2">4</span><span class="s6">px</span><span class="s1">, </span><span class="s2">4</span><span class="s6">px</span><span class="s1">, </span><span class="s2">4</span><span class="s6">px</span><span class="s1">, </span><span class="s2">rgba</span><span class="s1">(</span><span class="s2">0</span><span class="s1">, </span><span class="s2">0</span><span class="s1">, </span><span class="s2">0</span><span class="s1">, </span><span class="s2">0.2</span><span class="s1">)); 
+<a name="l27"><span class="ln">27   </span></a>  </span><span class="s3">@include </span><span class="s4">centerElement</span><span class="s1">; 
+<a name="l28"><span class="ln">28   </span></a>   
+<a name="l29"><span class="ln">29   </span></a>  </span><span class="s4">#login </span><span class="s1">{ 
+<a name="l30"><span class="ln">30   </span></a>    </span><span class="s5">width</span><span class="s1">: </span><span class="s2">350</span><span class="s6">px</span><span class="s1">; 
+<a name="l31"><span class="ln">31   </span></a>    </span><span class="s5">height</span><span class="s1">: </span><span class="s2">175</span><span class="s6">px</span><span class="s1">; 
+<a name="l32"><span class="ln">32   </span></a>  } 
+<a name="l33"><span class="ln">33   </span></a>   
+<a name="l34"><span class="ln">34   </span></a>  </span><span class="s4">#welcome </span><span class="s1">{ 
+<a name="l35"><span class="ln">35   </span></a>    </span><span class="s5">width</span><span class="s1">: </span><span class="s2">350</span><span class="s6">px</span><span class="s1">; 
+<a name="l36"><span class="ln">36   </span></a>    </span><span class="s5">height</span><span class="s1">: </span><span class="s2">175</span><span class="s6">px</span><span class="s1">; 
+<a name="l37"><span class="ln">37   </span></a>     
+<a name="l38"><span class="ln">38   </span></a>    </span><span class="s4">#title </span><span class="s1">{ 
+<a name="l39"><span class="ln">39   </span></a>      </span><span class="s5">background-color</span><span class="s1">: </span><span class="s2">rgba</span><span class="s1">(</span><span class="s2">0</span><span class="s1">, </span><span class="s2">0</span><span class="s1">, </span><span class="s2">0</span><span class="s1">, </span><span class="s2">0.5</span><span class="s1">); 
+<a name="l40"><span class="ln">40   </span></a>      </span><span class="s5">padding</span><span class="s1">: </span><span class="s2">5</span><span class="s6">px</span><span class="s1">; 
+<a name="l41"><span class="ln">41   </span></a>      </span><span class="s3">@include </span><span class="s2">rounded-corners</span><span class="s1">(</span><span class="s2">5</span><span class="s6">px</span><span class="s1">) 
+<a name="l42"><span class="ln">42   </span></a>    } 
+<a name="l43"><span class="ln">43   </span></a>  } 
+<a name="l44"><span class="ln">44   </span></a>} 
+<a name="l45"><span class="ln">45   </span></a></span></pre>
+</body>
+</html>

@@ -1,4 +1,4 @@
-# Handles all dynamic processing for any request sent to Tickets
+# Define a new class which inherits from the Application Controller
 class TicketsController < ApplicationController
   # A Regular Expression for the format of a user tag
   USER_TAG_REGEX = /@((?:[a-z][a-z]+))/
@@ -8,10 +8,12 @@ class TicketsController < ApplicationController
     # Execute if the user hasn't exceeded their ticket allowance
     unless current_user.help_requests.where(open: true).count < 1
       # Redirect to their ticket list
-      redirect_to ("/tickets")
+      redirect_to("/tickets")
       # Abort processing this method
       return
     end
+    # Get user
+    @user = current_user
     # Create a blank ticket associated with the currently logged in user.
     @ticket = current_user.help_requests.build
   end

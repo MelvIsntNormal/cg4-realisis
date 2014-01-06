@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>tickets_controller.rb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(188,148,88); font-style: italic; }
+.s1 { color: rgb(230,225,220); }
+.s2 { color: rgb(204,120,51); }
+.s3 { color: rgb(109,156,190); }
+.s4 { color: rgb(165,194,97); }
+.s5 { color: rgb(188,148,88); font-weight: bold; font-style: italic; }
+.s6 { color: rgb(208,208,255); }
+.s7 { color: rgb(204,120,50); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+tickets_controller.rb</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<a name="l1"><span class="ln">1    </span></a><span class="s0"># Handles all dynamic processing for any request sent to Tickets</span><span class="s1"> 
+<a name="l2"><span class="ln">2    </span></a></span><span class="s2">class </span><span class="s3">TicketsController </span><span class="s2">&lt; </span><span class="s3">ApplicationController</span><span class="s1"> 
+<a name="l3"><span class="ln">3    </span></a>  </span><span class="s0"># A Regular Expression for the format of a user tag</span><span class="s1"> 
+<a name="l4"><span class="ln">4    </span></a>  </span><span class="s3">USER_TAG_REGEX </span><span class="s2">= </span><span class="s4">/</span><span class="s1">@((?:[a-z][a-z]+))</span><span class="s4">/</span><span class="s1"> 
+<a name="l5"><span class="ln">5    </span></a> 
+<a name="l6"><span class="ln">6    </span></a>  </span><span class="s0"># When 'new' requested (handles new tickets):</span><span class="s1"> 
+<a name="l7"><span class="ln">7    </span></a>  </span><span class="s2">def </span><span class="s1">new 
+<a name="l8"><span class="ln">8    </span></a>    </span><span class="s0"># Execute </span><span class="s5">if </span><span class="s0">the user hasn't exceeded their ticket allowance</span><span class="s1"> 
+<a name="l9"><span class="ln">9    </span></a>    </span><span class="s2">unless </span><span class="s1">current_user.help_requests.where(open: </span><span class="s2">true</span><span class="s1">).count </span><span class="s2">&lt; </span><span class="s4">1</span><span class="s1"> 
+<a name="l10"><span class="ln">10   </span></a>      </span><span class="s0"># Redirect to their ticket list</span><span class="s1"> 
+<a name="l11"><span class="ln">11   </span></a>      redirect_to(</span><span class="s4">&quot;/tickets&quot;</span><span class="s1">) 
+<a name="l12"><span class="ln">12   </span></a>      </span><span class="s0"># Abort processing this method</span><span class="s1"> 
+<a name="l13"><span class="ln">13   </span></a>      </span><span class="s2">return</span><span class="s1"> 
+<a name="l14"><span class="ln">14   </span></a>    </span><span class="s2">end</span><span class="s1"> 
+<a name="l15"><span class="ln">15   </span></a>    </span><span class="s0"># Create a blank ticket associated with the currently logged in user.</span><span class="s1"> 
+<a name="l16"><span class="ln">16   </span></a>    </span><span class="s6">@ticket </span><span class="s2">= </span><span class="s1">current_user.help_requests.build 
+<a name="l17"><span class="ln">17   </span></a>  </span><span class="s2">end</span><span class="s1"> 
+<a name="l18"><span class="ln">18   </span></a> 
+<a name="l19"><span class="ln">19   </span></a>  </span><span class="s0"># When 'create' requested (handles saving new tickets):</span><span class="s1"> 
+<a name="l20"><span class="ln">20   </span></a>  </span><span class="s2">def </span><span class="s1">create 
+<a name="l21"><span class="ln">21   </span></a>    </span><span class="s0"># Build a ticket associated with the current user and fill with strong parameters</span><span class="s1"> 
+<a name="l22"><span class="ln">22   </span></a>    </span><span class="s6">@ticket </span><span class="s2">= </span><span class="s1">current_user.help_requests.build(ticket_params) 
+<a name="l23"><span class="ln">23   </span></a>    </span><span class="s0"># New Hash</span><span class="s1"> 
+<a name="l24"><span class="ln">24   </span></a>    add_info </span><span class="s2">= </span><span class="s1">{} 
+<a name="l25"><span class="ln">25   </span></a>    </span><span class="s0"># New Nested Array</span><span class="s1"> 
+<a name="l26"><span class="ln">26   </span></a>    add_info[</span><span class="s3">:tagged_users</span><span class="s1">] </span><span class="s2">= </span><span class="s1">[] 
+<a name="l27"><span class="ln">27   </span></a>    </span><span class="s0"># Scan for tagged users in the report:</span><span class="s1"> 
+<a name="l28"><span class="ln">28   </span></a>    </span><span class="s6">@ticket</span><span class="s1">.desc.scan(</span><span class="s3">USER_TAG_REGEX</span><span class="s1">) </span><span class="s2">do |</span><span class="s1">name</span><span class="s2">|</span><span class="s1"> 
+<a name="l29"><span class="ln">29   </span></a>      </span><span class="s0"># Find a tagged user in the database</span><span class="s1"> 
+<a name="l30"><span class="ln">30   </span></a>      user </span><span class="s2">= </span><span class="s3">User</span><span class="s1">.find_by_name(name) 
+<a name="l31"><span class="ln">31   </span></a>      </span><span class="s0"># Add the tagged user to the hash of tagged users</span><span class="s1"> 
+<a name="l32"><span class="ln">32   </span></a>      add_info[</span><span class="s3">:tagged_users</span><span class="s1">] </span><span class="s2">&lt;&lt; </span><span class="s1">user.name </span><span class="s2">unless </span><span class="s1">user </span><span class="s2">== nil</span><span class="s1"> 
+<a name="l33"><span class="ln">33   </span></a>    </span><span class="s2">end</span><span class="s1"> 
+<a name="l34"><span class="ln">34   </span></a>    </span><span class="s0"># Save a JSON representation of the add_info hash to the record</span><span class="s1"> 
+<a name="l35"><span class="ln">35   </span></a>    </span><span class="s6">@ticket</span><span class="s1">.addinfo </span><span class="s2">= </span><span class="s3">JSON</span><span class="s1">.generate(add_info) 
+<a name="l36"><span class="ln">36   </span></a>    </span><span class="s0"># Save the new record in the database</span><span class="s1"> 
+<a name="l37"><span class="ln">37   </span></a>    </span><span class="s6">@ticket</span><span class="s1">.save 
+<a name="l38"><span class="ln">38   </span></a>    </span><span class="s0"># Send the user to their homepage</span><span class="s1"> 
+<a name="l39"><span class="ln">39   </span></a>    redirect_to me_path 
+<a name="l40"><span class="ln">40   </span></a>  </span><span class="s2">end</span><span class="s1"> 
+<a name="l41"><span class="ln">41   </span></a> 
+<a name="l42"><span class="ln">42   </span></a>  </span><span class="s0"># When 'show' requested (handles showing tickets)</span><span class="s1"> 
+<a name="l43"><span class="ln">43   </span></a>  </span><span class="s2">def </span><span class="s1">show 
+<a name="l44"><span class="ln">44   </span></a>    </span><span class="s0"># Get the current user</span><span class="s1"> 
+<a name="l45"><span class="ln">45   </span></a>    </span><span class="s6">@user </span><span class="s2">= </span><span class="s3">User</span><span class="s1">.find(current_user.id) 
+<a name="l46"><span class="ln">46   </span></a>    </span><span class="s0"># Define arrays to hold open and closed tickets</span><span class="s1"> 
+<a name="l47"><span class="ln">47   </span></a>    </span><span class="s6">@open_tickets </span><span class="s2">= </span><span class="s1">[] 
+<a name="l48"><span class="ln">48   </span></a>    </span><span class="s6">@closed_tickets </span><span class="s2">= </span><span class="s1">[] 
+<a name="l49"><span class="ln">49   </span></a>    </span><span class="s0"># For each request the person has made:</span><span class="s1"> 
+<a name="l50"><span class="ln">50   </span></a>    </span><span class="s6">@user</span><span class="s1">.help_requests.each </span><span class="s2">do |</span><span class="s1">request</span><span class="s2">|</span><span class="s1"> 
+<a name="l51"><span class="ln">51   </span></a>      </span><span class="s0"># If the request is open...</span><span class="s1"> 
+<a name="l52"><span class="ln">52   </span></a>      </span><span class="s2">if </span><span class="s1">request.open? 
+<a name="l53"><span class="ln">53   </span></a>        </span><span class="s0"># ...add it to the array of open tickets</span><span class="s1"> 
+<a name="l54"><span class="ln">54   </span></a>        </span><span class="s6">@open_tickets </span><span class="s2">&lt;&lt; </span><span class="s1">request 
+<a name="l55"><span class="ln">55   </span></a>        </span><span class="s0"># Else </span><span class="s5">if </span><span class="s0">the ticket is closed...</span><span class="s1"> 
+<a name="l56"><span class="ln">56   </span></a>      </span><span class="s2">elsif </span><span class="s1">!request.open? 
+<a name="l57"><span class="ln">57   </span></a>        </span><span class="s0"># Add it to the list of closed tickets</span><span class="s1"> 
+<a name="l58"><span class="ln">58   </span></a>        </span><span class="s6">@closed_tickets </span><span class="s2">&lt;&lt; </span><span class="s1">request 
+<a name="l59"><span class="ln">59   </span></a>      </span><span class="s2">end</span><span class="s1"> 
+<a name="l60"><span class="ln">60   </span></a>    </span><span class="s2">end</span><span class="s1"> 
+<a name="l61"><span class="ln">61   </span></a>  </span><span class="s2">end</span><span class="s1"> 
+<a name="l62"><span class="ln">62   </span></a> 
+<a name="l63"><span class="ln">63   </span></a>  private </span><span class="s0"># Private security functions</span><span class="s1"> 
+<a name="l64"><span class="ln">64   </span></a> 
+<a name="l65"><span class="ln">65   </span></a>  </span><span class="s0"># Strong Parameters for ticket:</span><span class="s1"> 
+<a name="l66"><span class="ln">66   </span></a>  </span><span class="s2">def </span><span class="s1">ticket_params 
+<a name="l67"><span class="ln">67   </span></a>    </span><span class="s0"># Allow only the title and description parameters to be passed.</span><span class="s1"> 
+<a name="l68"><span class="ln">68   </span></a>    params.require(</span><span class="s3">:ticket</span><span class="s1">).permit(</span><span class="s3">:title</span><span class="s7">, </span><span class="s3">:desc</span><span class="s1">) 
+<a name="l69"><span class="ln">69   </span></a>  </span><span class="s2">end</span><span class="s1"> 
+<a name="l70"><span class="ln">70   </span></a></span><span class="s2">end</span></pre>
+</body>
+</html>

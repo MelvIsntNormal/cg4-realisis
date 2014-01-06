@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>_show.html.erb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(230,225,220); }
+.s1 { color: rgb(232,191,106); }
+.s2 { color: rgb(230,225,220); }
+.s3 { color: rgb(208,208,255); }
+.s4 { color: rgb(204,120,50); }
+.s5 { color: rgb(165,194,97); }
+.s6 { color: rgb(109,156,190); }
+.s7 { color: rgb(204,120,51); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+_show.html.erb</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<a name="l1"><span class="ln">1    </span></a><span class="s0">Infraction worth </span><span class="s1">&lt;%= </span><span class="s0">pluralize </span><span class="s3">@infraction</span><span class="s2">.</span><span class="s0">points</span><span class="s2">.</span><span class="s0">to_s</span><span class="s4">, </span><span class="s5">&quot;point&quot; </span><span class="s1">%&gt; </span><span class="s0">given by </span><span class="s1">&lt;%= </span><span class="s6">User</span><span class="s2">.</span><span class="s0">find</span><span class="s2">(</span><span class="s3">@infraction</span><span class="s2">.</span><span class="s0">admin_id</span><span class="s2">).</span><span class="s0">name </span><span class="s1">%&gt;</span><span class="s0">&lt;</span><span class="s1">br</span><span class="s0">&gt; 
+<a name="l2"><span class="ln">2    </span></a>Reason: </span><span class="s1">&lt;%= </span><span class="s3">@infraction</span><span class="s2">.</span><span class="s0">desc </span><span class="s1">%&gt; </span><span class="s0">&lt;</span><span class="s1">br</span><span class="s0">&gt; 
+<a name="l3"><span class="ln">3    </span></a></span><span class="s1">&lt;% </span><span class="s7">if </span><span class="s3">@infraction</span><span class="s2">.permanent? </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l4"><span class="ln">4    </span></a>    This infraction is permanent. &lt;</span><span class="s1">br</span><span class="s0">&gt; 
+<a name="l5"><span class="ln">5    </span></a></span><span class="s1">&lt;% </span><span class="s7">else </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l6"><span class="ln">6    </span></a>    Expires in </span><span class="s1">&lt;%= </span><span class="s0">distance_of_time_in_words_to_now</span><span class="s2">(</span><span class="s3">@infraction</span><span class="s2">.</span><span class="s0">expires_at</span><span class="s2">) </span><span class="s1">%&gt; </span><span class="s0">on </span><span class="s1">&lt;%= </span><span class="s3">@infraction</span><span class="s2">.</span><span class="s0">expires_at </span><span class="s1">%&gt; </span><span class="s0">&lt;</span><span class="s1">br</span><span class="s0">&gt; 
+<a name="l7"><span class="ln">7    </span></a></span><span class="s1">&lt;% </span><span class="s7">end </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l8"><span class="ln">8    </span></a></span><span class="s1">&lt;%= </span><span class="s0">link_to </span><span class="s5">&quot;Edit Infraction&quot;</span><span class="s4">, </span><span class="s0">edit_user_infraction_path</span><span class="s2">(</span><span class="s3">@infraction</span><span class="s2">.</span><span class="s0">user_id</span><span class="s4">, </span><span class="s3">@infraction</span><span class="s2">.</span><span class="s0">id</span><span class="s2">)</span><span class="s4">, </span><span class="s0">remote</span><span class="s2">: </span><span class="s7">true </span><span class="s1">%&gt;</span><span class="s0"> 
+<a name="l9"><span class="ln">9    </span></a></span></pre>
+</body>
+</html>

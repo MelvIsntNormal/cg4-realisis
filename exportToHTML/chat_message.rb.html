@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>chat_message.rb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,51); }
+.s1 { color: rgb(230,225,220); }
+.s2 { color: rgb(109,156,190); }
+.s3 { color: rgb(165,194,97); }
+.s4 { color: rgb(204,120,50); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+chat_message.rb</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<a name="l1"><span class="ln">1    </span></a><span class="s0">class </span><span class="s2">ChatMessage </span><span class="s0">&lt; </span><span class="s2">ActiveRecord</span><span class="s1">::</span><span class="s2">Base</span><span class="s1"> 
+<a name="l2"><span class="ln">2    </span></a>  belongs_to </span><span class="s2">:user</span><span class="s1"> 
+<a name="l3"><span class="ln">3    </span></a>  default_scope </span><span class="s0">-&gt; </span><span class="s1">{ order(</span><span class="s3">'created_at DESC'</span><span class="s1">) } 
+<a name="l4"><span class="ln">4    </span></a>  validates </span><span class="s2">:user_id</span><span class="s4">, </span><span class="s1">presence: </span><span class="s0">true</span><span class="s1"> 
+<a name="l5"><span class="ln">5    </span></a>  validates </span><span class="s2">:message</span><span class="s4">, </span><span class="s1">length: {maximum: </span><span class="s3">140</span><span class="s1">}</span><span class="s4">, </span><span class="s1">presence: </span><span class="s0">true</span><span class="s1"> 
+<a name="l6"><span class="ln">6    </span></a></span><span class="s0">end</span><span class="s1"> 
+<a name="l7"><span class="ln">7    </span></a></span></pre>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>static_pages_controller.rb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,51); }
+.s1 { color: rgb(230,225,220); }
+.s2 { color: rgb(109,156,190); }
+.s3 { color: rgb(165,194,97); }
+.s4 { color: rgb(208,208,255); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+static_pages_controller.rb</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<a name="l1"><span class="ln">1    </span></a><span class="s0">class </span><span class="s2">StaticPagesController </span><span class="s0">&lt; </span><span class="s2">ApplicationController</span><span class="s1"> 
+<a name="l2"><span class="ln">2    </span></a>  skip_before_filter </span><span class="s2">:isAuth</span><span class="s1"> 
+<a name="l3"><span class="ln">3    </span></a>   
+<a name="l4"><span class="ln">4    </span></a>  </span><span class="s0">def </span><span class="s1">index 
+<a name="l5"><span class="ln">5    </span></a>    </span><span class="s0">if </span><span class="s1">signed_in? 
+<a name="l6"><span class="ln">6    </span></a>      redirect_to </span><span class="s3">&quot;/#{</span><span class="s4">@current_user</span><span class="s1">.name</span><span class="s3">}&quot;</span><span class="s1"> 
+<a name="l7"><span class="ln">7    </span></a>      </span><span class="s0">return</span><span class="s1"> 
+<a name="l8"><span class="ln">8    </span></a>    </span><span class="s0">end</span><span class="s1"> 
+<a name="l9"><span class="ln">9    </span></a>     
+<a name="l10"><span class="ln">10   </span></a>    render layout: </span><span class="s0">false</span><span class="s1"> 
+<a name="l11"><span class="ln">11   </span></a>  </span><span class="s0">end</span><span class="s1"> 
+<a name="l12"><span class="ln">12   </span></a>   
+<a name="l13"><span class="ln">13   </span></a></span><span class="s0">end</span><span class="s1"> 
+<a name="l14"><span class="ln">14   </span></a></span></pre>
+</body>
+</html>

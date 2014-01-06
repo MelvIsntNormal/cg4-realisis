@@ -1,12 +1,21 @@
+<!--Declare header element-->
 <header>
+    <!--Declare nav element for navigation bar-->
 	<nav>
+        <!--Render a link to the home page-->
 		<%= link_to "Home", root_path %>
+        <!--If signed in-->
 		<% if signed_in? %>
+          <!--Output a link to the get help page-->
           <%= link_to "Get Help", '/tickets' %>
+          <!--Output a link to the game client-->
           <%= link_to "Play!", play_path, target: "_blank" %>
+          <!--If theuser is an admin-->
           <% if @user.admin? %>
+              <!--Output a link to housekeeping-->
               <%= link_to "Housekeeping", '/hk/' %>
           <% end %>
+          <!--Output a link to log out?-->
 		  <%= link_to "Logout", logout_path, id: "logout", method: "delete" %>
 		<% end %>
 	</nav>

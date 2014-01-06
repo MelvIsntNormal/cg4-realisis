@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>_error_messages.html.erb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(232,191,106); }
+.s1 { color: rgb(230,225,220); }
+.s2 { color: rgb(204,120,51); }
+.s3 { color: rgb(208,208,255); }
+.s4 { color: rgb(230,225,220); }
+.s5 { color: rgb(165,194,97); font-weight: bold; }
+.s6 { color: rgb(204,120,50); }
+.s7 { color: rgb(165,194,97); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+_error_messages.html.erb</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<a name="l1"><span class="ln">1    </span></a><span class="s0">&lt;% </span><span class="s2">if </span><span class="s3">@user</span><span class="s1">.</span><span class="s4">errors</span><span class="s1">.any? </span><span class="s0">%&gt;</span><span class="s4"> 
+<a name="l2"><span class="ln">2    </span></a>  &lt;</span><span class="s0">section id=</span><span class="s5">&quot;error_explanation&quot;</span><span class="s4">&gt; 
+<a name="l3"><span class="ln">3    </span></a>    &lt;</span><span class="s0">p class=</span><span class="s5">&quot;alert-error&quot;</span><span class="s4">&gt; 
+<a name="l4"><span class="ln">4    </span></a>      The form contains </span><span class="s0">&lt;%= </span><span class="s4">pluralize</span><span class="s1">(</span><span class="s3">@user</span><span class="s1">.</span><span class="s4">errors</span><span class="s1">.</span><span class="s4">count</span><span class="s6">, </span><span class="s7">&quot;error&quot;</span><span class="s1">) </span><span class="s0">%&gt;</span><span class="s4">. 
+<a name="l5"><span class="ln">5    </span></a>    &lt;/</span><span class="s0">p</span><span class="s4">&gt; 
+<a name="l6"><span class="ln">6    </span></a>    &lt;</span><span class="s0">ul</span><span class="s4">&gt; 
+<a name="l7"><span class="ln">7    </span></a>    </span><span class="s0">&lt;% </span><span class="s3">@user</span><span class="s1">.</span><span class="s4">errors</span><span class="s1">.</span><span class="s4">full_messages</span><span class="s1">.</span><span class="s4">each </span><span class="s2">do |</span><span class="s4">msg</span><span class="s2">| </span><span class="s0">%&gt;</span><span class="s4"> 
+<a name="l8"><span class="ln">8    </span></a>      &lt;</span><span class="s0">li</span><span class="s4">&gt;* </span><span class="s0">&lt;%= </span><span class="s4">msg </span><span class="s0">%&gt;</span><span class="s4">&lt;/</span><span class="s0">li</span><span class="s4">&gt; 
+<a name="l9"><span class="ln">9    </span></a>    </span><span class="s0">&lt;% </span><span class="s2">end </span><span class="s0">%&gt;</span><span class="s4"> 
+<a name="l10"><span class="ln">10   </span></a>    &lt;/</span><span class="s0">ul</span><span class="s4">&gt; 
+<a name="l11"><span class="ln">11   </span></a>  &lt;/</span><span class="s0">section</span><span class="s4">&gt; 
+<a name="l12"><span class="ln">12   </span></a></span><span class="s0">&lt;% </span><span class="s2">end </span><span class="s0">%&gt;</span></pre>
+</body>
+</html>

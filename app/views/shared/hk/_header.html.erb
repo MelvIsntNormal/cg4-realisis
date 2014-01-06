@@ -1,8 +1,14 @@
+<!--Declare header element-->
 <header>
+    <!--Declare navigation element-->
 	<nav>
+        <!--Output link to homepage-->
 		<%= link_to "Home", 	root_path %>
+        <!--Output link to the list of users page-->
 		<%= link_to "Users", 	users_list_path %>
+        <!--Output link to the list of tickets page-->
 		<%= link_to "Tickets", 	tickets_list_path %>
+        <!--Output a link to log the user out-->
 		<%= link_to "Logout", 	logout_path, id: "logout", method: "delete" %>
 	</nav>
 </header>

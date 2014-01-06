@@ -1,10 +1,16 @@
+<!--Provide title and description for page-->
 <% provide :title, 'All Users' %>
 <% provide :pagetitle, 'All Users' %>
 
+<!--Declare a division for the list of users-->
 <div id="userlist">
+  <!--Declare un-ordered list for users-->
   <ul class="users">
+    <!--For each user-->
     <% @users.each do |user| %>
+      <!--Declare List item-->
       <li>
+        <!--Output link to the users housekeeping page-->
         <%= link_to user.name, "/hk/users/#{user.name}" %>
       </li>
     <% end %>

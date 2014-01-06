@@ -1,26 +1,43 @@
+<!--Considering the value of the doaction variable-->
 <% case doaction %>
-	<% when "req-friend"%>
-		<%= form_for(current_user.relations.build(character_id: @user.id, reltype: "freq"), remote: true) do |f| %>
-  			<%= f.hidden_field :character_id %>
-  			<%= f.hidden_field :reltype %>
-  			<%= f.submit "Add Friend", class: "submit" %>
-		<% end %>
-		
-	<% when "add-friend"%>
-		<%= form_for(current_user.relations.build(character_id: @user.id, reltype: "friend"), remote: true) do |f| %>
-  			<%= f.hidden_field :character_id %>
-  			<%= f.hidden_field :reltype %>
-  			<%= f.submit "Accept Request", class: "submit" %>
-		<% end %>
-	
-	<% when "rej-friend" %>
-		<%= form_for(current_user.reverse_relations.find_by(owner_id: @user.id, reltype: "freq"), html: { method: :delete }, remote: true) do |f| %>
-  			<%= f.submit "Reject Request", class: "submit" %>
-		<% end %>
-	
-	<% when "rm-friend"%>
-		<%= form_for(current_user.relations.find_by(character_id: @user.id, reltype: "friend"), html: { method: :delete }, remote: true) do |f| %>
-  			<%= f.submit "Remove Friend", class: "submit" %>
-		<% end %>
-		
+<!--If requesting a friend-->
+<% when "req-friend"%>
+    <!--Form helper for creating a friend request-->
+    <%= form_for(current_user.relations.build(character_id: @user.id, reltype: "freq"), remote: true) do |f| %>
+        <!--Hidden field containing the ID of the other user-->
+        <%= f.hidden_field :character_id %>
+        <!--Hidden field containing the type or relationship to be created-->
+        <%= f.hidden_field :reltype %>
+        <!--Render submit button to accept a friend request-->
+        <%= f.submit "Add Friend", class: "submit" %>
+    <% end %>
+
+<!--If adding a friend-->
+<% when "add-friend"%>
+    <!--Form helper for accepting a friend request-->
+    <%= form_for(current_user.relations.build(character_id: @user.id, reltype: "friend"), remote: true) do |f| %>
+        <!--Hidden field containing the ID of the other user-->
+        <%= f.hidden_field :character_id %>
+        <!--Hidden field containing the type or relationship to be created-->
+        <%= f.hidden_field :reltype %>
+        <!--Render submit button to accept a friend request-->
+        <%= f.submit "Accept Request", class: "submit" %>
+    <% end %>
+
+<!--If rejecting a request-->
+<% when "rej-friend" %>
+    <!--Form helper for rejecting a friend request-->
+    <%= form_for(current_user.reverse_relations.find_by(owner_id: @user.id, reltype: "freq"), html: { method: :delete }, remote: true) do |f| %>
+        <!--Render submit button to reject a friend request-->
+        <%= f.submit "Reject Request", class: "submit" %>
+    <% end %>
+
+<!--If removing a friend-->
+<% when "rm-friend"%>
+    <!--Form helper for removing a friend-->
+    <%= form_for(current_user.relations.find_by(character_id: @user.id, reltype: "friend"), html: { method: :delete }, remote: true) do |f| %>
+        <!--Render submit button to remove a friend-->
+        <%= f.submit "Remove Friend", class: "submit" %>
+    <% end %>
+
 <% end %>

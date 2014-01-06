@@ -1,13 +1,22 @@
+<!--Declare unordered list for friends-->
 <ul id="friendlist">
+    <!--Get array of friends-->
 	<% @friends = current_user.friends%>
+    <!--Get array of friend requests-->
 	<% @friend_requests = current_user.friend_requests%>
+    <!--If there are any friend requests-->
 	<% if @friend_requests.any? %>
+        <!--For each request-->
 		<% @friend_requests.each do |r| %>
+            <!--Render a list item with a link to the profile of who sent the request-->
 			<li class="friend-request-cp"><%= link_to "Friend Request from #{r.name}", "/#{r.name}" %></li>
 		<% end %>
 	<% end %>
+    <!--If there are any friends-->
 	<% if @friends.any? %>
+        <!--For each friend-->
 		<% @friends.each do |r| %>
+            Render a list item with a link to the friends profile
 			<li class="friend-cp"><%= link_to "#{r.name}", "/#{r.name}" %></li>
 		<% end %>
 	<% end %>

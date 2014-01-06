@@ -1,10 +1,16 @@
-		<% if current_user.friends?(@user) %>
-			<%= render 'shared/edit_relation', doaction: "rm-friend" %>
-		<% elsif current_user.req_friends?(@user) %>
-			Friend Request Pending...
-		<% elsif current_user.pend_friends?(@user) %>
-			<%= render 'shared/edit_relation', doaction: "add-friend" %>
-			<%= render 'shared/edit_relation', doaction: "rej-friend" %>
-		<% else %>
-			<%= render 'shared/edit_relation', doaction: "req-friend" %>
-		<% end %>
+<!--If the current user is friends with the other user-->
+<% if current_user.friends?(@user) %>
+    <!--Render button to remove friend-->
+    <%= render 'shared/edit_relation', doaction: "rm-friend" %>
+<!--If the current user has sent a friend request to the other user-->
+<% elsif current_user.req_friends?(@user) %>
+    Friend Request Pending...
+<!--If the current user received a friend request from the other user-->
+<% elsif current_user.pend_friends?(@user) %>
+    <!--Render button to accept or reject the request-->
+    <%= render 'shared/edit_relation', doaction: "add-friend" %>
+    <%= render 'shared/edit_relation', doaction: "rej-friend" %>
+<% else %>
+    <!--Render a button to add thefriend-->
+    <%= render 'shared/edit_relation', doaction: "req-friend" %>
+<% end %>

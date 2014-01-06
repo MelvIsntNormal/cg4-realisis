@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>infraction.rb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,51); }
+.s1 { color: rgb(230,225,220); }
+.s2 { color: rgb(109,156,190); }
+.s3 { color: rgb(204,120,50); }
+.s4 { color: rgb(165,194,97); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+infraction.rb</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<a name="l1"><span class="ln">1    </span></a><span class="s0">class </span><span class="s2">Infraction </span><span class="s0">&lt; </span><span class="s2">ActiveRecord</span><span class="s1">::</span><span class="s2">Base</span><span class="s1"> 
+<a name="l2"><span class="ln">2    </span></a>  belongs_to </span><span class="s2">:user</span><span class="s1"> 
+<a name="l3"><span class="ln">3    </span></a>  belongs_to </span><span class="s2">:admin</span><span class="s3">, </span><span class="s1">class_name: </span><span class="s4">&quot;User&quot;</span><span class="s1"> 
+<a name="l4"><span class="ln">4    </span></a> 
+<a name="l5"><span class="ln">5    </span></a>  after_find </span><span class="s0">do</span><span class="s1"> 
+<a name="l6"><span class="ln">6    </span></a>    </span><span class="s0">if self</span><span class="s1">.expires_at </span><span class="s0">&lt;= </span><span class="s2">Time</span><span class="s1">.now 
+<a name="l7"><span class="ln">7    </span></a>      </span><span class="s0">self</span><span class="s1">.expired </span><span class="s0">= true</span><span class="s1"> 
+<a name="l8"><span class="ln">8    </span></a>      </span><span class="s0">self</span><span class="s1">.save 
+<a name="l9"><span class="ln">9    </span></a>    </span><span class="s0">else</span><span class="s1"> 
+<a name="l10"><span class="ln">10   </span></a>      </span><span class="s0">self</span><span class="s1">.expired </span><span class="s0">= false</span><span class="s1"> 
+<a name="l11"><span class="ln">11   </span></a>      </span><span class="s0">self</span><span class="s1">.save 
+<a name="l12"><span class="ln">12   </span></a>    </span><span class="s0">end</span><span class="s1"> 
+<a name="l13"><span class="ln">13   </span></a>  </span><span class="s0">end</span><span class="s1"> 
+<a name="l14"><span class="ln">14   </span></a> 
+<a name="l15"><span class="ln">15   </span></a>  before_save </span><span class="s0">do</span><span class="s1"> 
+<a name="l16"><span class="ln">16   </span></a>    </span><span class="s0">unless self</span><span class="s1">.expired? 
+<a name="l17"><span class="ln">17   </span></a>      </span><span class="s0">if self</span><span class="s1">.user.infraction_level </span><span class="s0">== </span><span class="s4">0</span><span class="s1"> 
+<a name="l18"><span class="ln">18   </span></a>        </span><span class="s0">self</span><span class="s1">.expires_at </span><span class="s0">= </span><span class="s4">1</span><span class="s1">.month.from_now 
+<a name="l19"><span class="ln">19   </span></a>        </span><span class="s0">break</span><span class="s1"> 
+<a name="l20"><span class="ln">20   </span></a>      </span><span class="s0">end</span><span class="s1"> 
+<a name="l21"><span class="ln">21   </span></a>      lvl </span><span class="s0">= </span><span class="s2">WarningLevel</span><span class="s1">.find(</span><span class="s0">self</span><span class="s1">.user.infraction_level) 
+<a name="l22"><span class="ln">22   </span></a>      </span><span class="s0">self</span><span class="s1">.expires_at </span><span class="s0">= </span><span class="s1">lvl.infr_length.months.from_now 
+<a name="l23"><span class="ln">23   </span></a>    </span><span class="s0">end</span><span class="s1"> 
+<a name="l24"><span class="ln">24   </span></a>  </span><span class="s0">end</span><span class="s1"> 
+<a name="l25"><span class="ln">25   </span></a></span><span class="s0">end</span><span class="s1"> 
+<a name="l26"><span class="ln">26   </span></a></span></pre>
+</body>
+</html>

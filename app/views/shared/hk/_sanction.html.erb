@@ -1,36 +1,54 @@
+<!--Define inner division for lock information-->
 <div class="inner-divide" id="Lock">
+  <!--If the user does not have a lock-->
   <% if @user.lock.nil? %>
+      <!--Render a link to create one-->
       <%= link_to "Lock Account", new_user_lock_path(@user.id), remote: true, id: "newlock" %>
   <% else %>
+      <!--Render unlock link-->
       This account is locked. <%= link_to "Unlock Account", "/users/#{@user.id}/lock", method: :delete %><br>
+      <!--Output lock description-->
       Reason: <%= @lock.desc %> <br>
+      <!--Output who the lock was given by-->
       Locked by <%= User.find(@lock.locked_by).name %> <br>
+      <!--If the lock is permanent-->
       <% if @lock.permanent? %>
           This lock is permanent. <br>
       <% else %>
+          <!--Show how long untill the lock expires-->
           Expires in <%= distance_of_time_in_words_to_now(@lock.expires_at) %> on <%= @lock.expires_at %> <br>
       <% end %>
+      <!--Render link to edit the lock-->
       <%= link_to "Edit Lock", edit_user_lock_path(@lock.user_id), remote: true, id: "editlock" %>
   <% end %>
 </div>
 
+<!--Declare inner division for infraction statistics-->
 <div class="inner-divide" id="InfractionStats">
+  <!--Output number of infractions the user has-->
   Infractions: <%= @user.infractions.count %><br>
+  <!--Output the number of points given to the user-->
   Infraction Points: <%= @user.infraction_points %><br>
+  <!--Output the infraction level the user is on-->
   Infraction Level: <%= @user.infraction_level %><br>
+  <!--Render link to give infraction to user-->
   <%= link_to "Give Infraction", new_user_infraction_path(@user.id), remote: true, id: "newinf" %>
 </div>
 
-
-
+<!--If the user has any infractions-->
 <% if @user.infractions.any? %>
+    <!--Declare a division to display infraction info-->
     <div class="inner-divide" id="Infraction">
       Select an infraction below
     </div>
 
+    <!--Declare a division to list infractions-->
     <div class="inner-divide" id="Infractions">
+      <!--Output the number of infractions the user has received-->
       Received <%= pluralize(@infractions.count, 'infraction') %>: <br>
+      <!--Declare ordered list for infractions-->
       <ol class="list-my-messages">
+        <!--Render all infractions-->
         <%= render @infractions %>
       </ol>
     </div>

@@ -1,13 +1,21 @@
+<!--Declare aside element for sidebar-->
 <aside>
+    <!--If the user is signed in-->
 	<% if signed_in? %>
+        <!--Declare division for sidebar-->
 		<div id="cp" style="height: 100%; width: 100%;">
 			<h3>Info</h3>
+            <!--Declare info division-->
 			<div>
 				You're logged in! Hi, <%= current_user.name %>!
 			</div>
+
 			<h3>Friends</h3>
+            <!--Declare friends division-->
 			<div id="friends">
-				<% if current_user.relations.any? %>
+                <!--If the user has any relations-->
+				<% if current_user.relations.any? || current_user.reverse_relations.any?%>
+                    <!--Render the relations-->
 					<%= render 'shared/friends' %>
 				<% else %>
 					None :( Go find some!
@@ -15,12 +23,18 @@
 			</div>
 		</div>
 	<% else %>
+        <!--Declare division for login-->
 		<div id="login">
 			<div class="title">Login</div>
+            <!--Form helper for logging in-->
 			<%= form_for(:session, url: sessions_path) do |f| %>
+                <!--Declare unordered list-->
 				<ul>
+                    <!--Render text box for username-->
 					<li><%= f.text_field :name, placeholder: "Username" %></li>
+                    <!--Render textbox for password-->
      				<li><%= f.password_field :password, placeholder: "Password" %></li>
+                    <!--Render submit button-->
 					<li><%= f.submit "Login", class: "submit" %></li>
    				</ul>
    			<% end %>

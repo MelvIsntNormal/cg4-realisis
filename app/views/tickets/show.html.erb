@@ -1,18 +1,28 @@
+<!--Declare a division for counting tickets-->
 <div class="ticket-count">
+  <!--Output number of open tickets-->
   You have <%= pluralize(@open_tickets.count, 'open ticket', 'open tickets') %>.
+  <!--This will not execute if the user has a ticket open already-->
   <% unless @open_tickets.count >= 1 %>
+    <!--Generate link to create new ticket-->
     <%= link_to "Call for help", gethelp_path %>
   <% end %>
 </div>
 
+<!--Declare a division to show open tickets-->
 <div id="open-tickets">
+  <!--Render a list of open tickets if the user has any tickets-->
   <%= render @open_tickets if @open_tickets.any? %>
 </div>
 
+<!--Declare a division for counting closed tickets-->
 <div class="ticket-count">
+  <!--Output number of closed tickets-->
   You have <%= pluralize(@closed_tickets.count, 'closed ticket', 'closed tickets') %>.
 </div>
 
+<!--Declare division for showing closed tickets-->
 <div id="closed-tickets">
+  <!--Render a list of closed tickets if the user has any closed tickets-->
   <%= render @closed_tickets if @closed_tickets.any? %>
 </div>
